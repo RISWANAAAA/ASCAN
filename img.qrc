@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>3dot.png</file>
+        <file>adddoctor.png</file>
+        <file>addlens.png</file>
+        <file>addperson.png</file>
+        <file>assesstive.png</file>
+        <file>CALCULATORIMG.png</file>
+        <file>CALIBRATIONIMG.png</file>
+        <file>delete.png</file>
+        <file>DOCTORIMG.png</file>
+        <file>LENSIMG.png</file>
+        <file>MEASUREIMG.png</file>
+        <file>PATIENTIMG.png</file>
+        <file>SETTINGSIMG.png</file>
+        <file>update.png</file>
+        <file>viewbut.png</file>
+        <file>edit.png</file>
+    </qresource>
+</RCC>

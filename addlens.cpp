@@ -12,3 +12,8 @@ AddLens::~AddLens()
 {
     delete ui;
 }
+
+void AddLens::on_ButLensBack_clicked()
+{
+    this->close();
+}

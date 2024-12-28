@@ -137,7 +137,7 @@ border:none;</string>
     <string notr="true"/>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <property name="styleSheet">
@@ -174,8 +174,8 @@ border:none;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/image/adddoctor.png);
-border:none;
+      <string notr="true">border:none;
+image: url(:/image/addperson.png);
 background-color:transparent;</string>
      </property>
      <property name="text">

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addpatient.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.4
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -60,8 +60,8 @@ public:
     QLineEdit *linepatkr;
     QLineEdit *linepatkr2;
     QLineEdit *linepatkr1;
-    QPushButton *ButSave;
-    QPushButton *ButBack;
+    QPushButton *ButPatSave;
+    QPushButton *ButPatBack;
 
     void setupUi(QDialog *addPatient)
     {
@@ -129,33 +129,128 @@ public:
         CheckMale = new QCheckBox(addPatient);
         CheckMale->setObjectName(QString::fromUtf8("CheckMale"));
         CheckMale->setGeometry(QRect(160, 200, 111, 31));
-        CheckMale->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckMale->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckFemale = new QCheckBox(addPatient);
         CheckFemale->setObjectName(QString::fromUtf8("CheckFemale"));
         CheckFemale->setGeometry(QRect(270, 200, 131, 31));
-        CheckFemale->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckFemale->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckOther = new QCheckBox(addPatient);
         CheckOther->setObjectName(QString::fromUtf8("CheckOther"));
         CheckOther->setGeometry(QRect(420, 200, 111, 31));
-        CheckOther->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckOther->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckImmersion = new QCheckBox(addPatient);
         CheckImmersion->setObjectName(QString::fromUtf8("CheckImmersion"));
         CheckImmersion->setGeometry(QRect(440, 310, 191, 31));
-        CheckImmersion->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckImmersion->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckContact = new QCheckBox(addPatient);
         CheckContact->setObjectName(QString::fromUtf8("CheckContact"));
-        CheckContact->setGeometry(QRect(300, 310, 181, 31));
-        CheckContact->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckContact->setGeometry(QRect(300, 310, 131, 31));
+        CheckContact->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         lblpatopmode = new QLabel(addPatient);
         lblpatopmode->setObjectName(QString::fromUtf8("lblpatopmode"));
         lblpatopmode->setGeometry(QRect(10, 306, 271, 41));
@@ -166,9 +261,28 @@ public:
         CheckPhakic = new QCheckBox(addPatient);
         CheckPhakic->setObjectName(QString::fromUtf8("CheckPhakic"));
         CheckPhakic->setGeometry(QRect(440, 255, 121, 31));
-        CheckPhakic->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckPhakic->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         lblpatopmethod = new QLabel(addPatient);
         lblpatopmethod->setObjectName(QString::fromUtf8("lblpatopmethod"));
         lblpatopmethod->setGeometry(QRect(10, 250, 271, 41));
@@ -179,21 +293,78 @@ public:
         CheckApakic = new QCheckBox(addPatient);
         CheckApakic->setObjectName(QString::fromUtf8("CheckApakic"));
         CheckApakic->setGeometry(QRect(300, 255, 131, 31));
-        CheckApakic->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckApakic->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckDense = new QCheckBox(addPatient);
         CheckDense->setObjectName(QString::fromUtf8("CheckDense"));
         CheckDense->setGeometry(QRect(580, 255, 111, 31));
-        CheckDense->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckDense->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         CheckRight = new QCheckBox(addPatient);
         CheckRight->setObjectName(QString::fromUtf8("CheckRight"));
         CheckRight->setGeometry(QRect(440, 370, 191, 31));
-        CheckRight->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckRight->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         lblpatopeye = new QLabel(addPatient);
         lblpatopeye->setObjectName(QString::fromUtf8("lblpatopeye"));
         lblpatopeye->setGeometry(QRect(10, 366, 271, 41));
@@ -204,9 +375,28 @@ public:
         CheckLeft = new QCheckBox(addPatient);
         CheckLeft->setObjectName(QString::fromUtf8("CheckLeft"));
         CheckLeft->setGeometry(QRect(300, 370, 141, 31));
-        CheckLeft->setStyleSheet(QString::fromUtf8("font:25px;\n"
-"color: rgb(255, 255, 255);\n"
-"font:bold;"));
+        CheckLeft->setStyleSheet(QString::fromUtf8("QCheckBox {\n"
+"    font-size: 25px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    font-weight: bold;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 20px;\n"
+"    height: 20px;\n"
+"    background-color: black;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-color: black;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-color: white;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+""));
         lblpatkleft = new QLabel(addPatient);
         lblpatkleft->setObjectName(QString::fromUtf8("lblpatkleft"));
         lblpatkleft->setGeometry(QRect(420, 420, 271, 41));
@@ -281,12 +471,12 @@ public:
         linepatkr1 = new QLineEdit(addPatient);
         linepatkr1->setObjectName(QString::fromUtf8("linepatkr1"));
         linepatkr1->setGeometry(QRect(110, 570, 121, 41));
-        ButSave = new QPushButton(addPatient);
-        ButSave->setObjectName(QString::fromUtf8("ButSave"));
-        ButSave->setGeometry(QRect(140, 630, 141, 51));
-        ButBack = new QPushButton(addPatient);
-        ButBack->setObjectName(QString::fromUtf8("ButBack"));
-        ButBack->setGeometry(QRect(380, 630, 141, 51));
+        ButPatSave = new QPushButton(addPatient);
+        ButPatSave->setObjectName(QString::fromUtf8("ButPatSave"));
+        ButPatSave->setGeometry(QRect(140, 630, 141, 51));
+        ButPatBack = new QPushButton(addPatient);
+        ButPatBack->setObjectName(QString::fromUtf8("ButPatBack"));
+        ButPatBack->setGeometry(QRect(380, 630, 141, 51));
 
         retranslateUi(addPatient);
 
@@ -327,8 +517,8 @@ public:
         lblpatkright->setText(QCoreApplication::translate("addPatient", "KeratoMeter - RIGHT", nullptr));
         lblpatkr1->setText(QCoreApplication::translate("addPatient", "KR1", nullptr));
         lblpatkr->setText(QCoreApplication::translate("addPatient", "KR", nullptr));
-        ButSave->setText(QCoreApplication::translate("addPatient", "save", nullptr));
-        ButBack->setText(QCoreApplication::translate("addPatient", "Back", nullptr));
+        ButPatSave->setText(QCoreApplication::translate("addPatient", "save", nullptr));
+        ButPatBack->setText(QCoreApplication::translate("addPatient", "Back", nullptr));
     } // retranslateUi
 
 };

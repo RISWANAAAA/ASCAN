@@ -12,3 +12,8 @@ AddDoctor::~AddDoctor()
 {
     delete ui;
 }
+
+void AddDoctor::on_ButDocBack_clicked()
+{
+    this->close();
+}

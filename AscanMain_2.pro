@@ -21,21 +21,27 @@ SOURCES += \
     addpatient.cpp \
     buttons.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    viewdoc.cpp \
+    viewpatient.cpp
 
 HEADERS += \
     adddoctor.h \
     addlens.h \
     addpatient.h \
     buttons.h \
-    mainwindow.h
+    mainwindow.h \
+    viewdoc.h \
+    viewpatient.h
 
 FORMS += \
     adddoctor.ui \
     addlens.ui \
     addpatient.ui \
     buttons.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    viewdoc.ui \
+    viewpatient.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

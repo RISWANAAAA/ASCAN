@@ -214,9 +214,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Male</string>
@@ -232,9 +251,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Female</string>
@@ -250,9 +288,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Other</string>
@@ -268,9 +325,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Immersion</string>
@@ -281,14 +357,33 @@ font:bold;</string>
     <rect>
      <x>300</x>
      <y>310</y>
-     <width>181</width>
+     <width>131</width>
      <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Contact</string>
@@ -325,9 +420,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Phakic</string>
@@ -364,9 +478,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Aphakic</string>
@@ -382,9 +515,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Dense</string>
@@ -400,9 +552,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Right</string>
@@ -439,9 +610,28 @@ font:bold;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font:25px;
-color: rgb(255, 255, 255);
-font:bold;</string>
+    <string notr="true">QCheckBox {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border: 1px solid gray;
+}
+
+QCheckBox::indicator:checked {
+    background-color: black;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: white;
+    border: 1px solid gray;
+}
+</string>
    </property>
    <property name="text">
     <string>Left</string>
@@ -675,7 +865,7 @@ font:bold;</string>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="ButSave">
+  <widget class="QPushButton" name="ButPatSave">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -688,7 +878,7 @@ font:bold;</string>
     <string>save</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ButBack">
+  <widget class="QPushButton" name="ButPatBack">
    <property name="geometry">
     <rect>
      <x>380</x>

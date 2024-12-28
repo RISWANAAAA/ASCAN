@@ -9,6 +9,11 @@
 #include<QSqlDatabase>
 #include<QSqlError>
 #include<QSqlQuery>
+#include"adddoctor.h"
+#include"addpatient.h"
+#include"addlens.h"
+#include"viewdoc.h"
+#include"viewpatient.h"
 
 namespace Ui {
 class Buttons;
@@ -53,6 +58,18 @@ private slots:
 
     void on_ButDocTouch_clicked();
 
+    void on_ButPatAdd_clicked();
+
+    void on_ButDocAdd_clicked();
+
+    void on_ButLensAdd_clicked();
+
+    void on_ButPatDelete_clicked();
+
+    void on_ButPatEdit_clicked();
+
+    void on_ButPatView_clicked();
+
 private:
     Ui::Buttons *ui;
     QPushButton *buttons[7];
@@ -63,6 +80,11 @@ private:
 bool patassistive=false;
 bool docassistive=false;
 bool lensassistive=false;
+addPatient *pat;
+AddDoctor *doc;
+AddLens *lens;
+viewdoc *viewd;
+viewpatient *viewp;
 
 };
 

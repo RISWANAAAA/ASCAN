@@ -10,6 +10,11 @@ Buttons::Buttons(QWidget *parent) :
 {
     ui->setupUi(this);
     move(0, 0);
+    lens=new AddLens;
+    doc=new AddDoctor;
+    pat=new addPatient;
+    viewd=new viewdoc;
+    viewp=new viewpatient;
     QSqlDatabase mydb1 = QSqlDatabase::addDatabase("QSQLITE");
     mydb1.setDatabaseName(PATH);  // Replace with your actual path
 
@@ -42,6 +47,9 @@ Buttons::Buttons(QWidget *parent) :
     loadpatientsql();
     loaddoctorsql();
     loadlenssql();
+    connect(pat,&addPatient::updatepatsql,this,&Buttons::loadpatientsql);
+    connect(pat,&addPatient::savepatsql,this,&Buttons::loadpatientsql);
+
 }
 
 Buttons::~Buttons()
@@ -291,4 +299,84 @@ void Buttons::on_ButDocTouch_clicked()
         ui->ButDocEdit->hide();
         ui->ButDocView->hide();
     }
+}
+
+void Buttons::on_ButPatAdd_clicked()
+{
+    pat->show();
+
+}
+
+void Buttons::on_ButDocAdd_clicked()
+{
+    doc->show();
+}
+
+void Buttons::on_ButLensAdd_clicked()
+{
+    lens->show();
+}
+
+void Buttons::on_ButPatDelete_clicked()
+{
+    QModelIndexList selectedRows = ui->tableView->selectionModel()->selectedRows();
+
+       if (selectedRows.isEmpty()) {
+           return;
+       }
+
+       int row = selectedRows.first().row();
+       QString id = ui->tableView->model()->index(row, 0).data().toString(); // Assuming 'id' is in the first column
+
+       QSqlQuery query;
+       query.prepare("DELETE FROM ascanpatient WHERE id = :id");
+       query.bindValue(":id", id);
+
+       if (query.exec()) {
+           loadpatientsql();
+       }
+}
+
+void Buttons::on_ButPatEdit_clicked()
+{
+    QModelIndexList selectedRows = ui->tableView->selectionModel()->selectedRows();
+    int row = selectedRows.first().row();
+    QString id = ui->tableView->model()->index(row,0).data().toString();
+    QString name = ui->tableView->model()->index(row, 1).data().toString();
+    QString age = ui->tableView->model()->index(row, 2).data().toString();
+    QString gender=ui->tableView->model()->index(row,3).data().toString();
+    QString number = ui->tableView->model()->index(row, 4).data().toString();
+    QString operatingmode=ui->tableView->model()->index(row,6).data().toString();
+    QString operatingmethod=ui->tableView->model()->index(row,5).data().toString();
+    QString operatingeye=ui->tableView->model()->index(row,7).data().toString();
+    QString keratol1=ui->tableView->model()->index(row,8).data().toString();
+    QString keratol2=ui->tableView->model()->index(row,9).data().toString();
+    QString keratol=ui->tableView->model()->index(row,10).data().toString();
+    QString kerator1=ui->tableView->model()->index(row,11).data().toString();
+    QString kerator2=ui->tableView->model()->index(row,12).data().toString();
+    QString kerator=ui->tableView->model()->index(row,13).data().toString();
+
+    pat->setpatientDetails(id, name,age,gender,number,operatingmethod,operatingmode,operatingeye,keratol1,keratol2,keratol,kerator1,kerator2,kerator);
+    pat->show();
+}
+
+void Buttons::on_ButPatView_clicked()
+{
+    QModelIndexList selectedRows = ui->tableView->selectionModel()->selectedRows();
+
+    if (selectedRows.isEmpty()) {
+        return;
+    }
+
+    int row = selectedRows.first().row();
+    QString id = ui->tableView->model()->index(row, 0).data().toString();
+    QString name = ui->tableView->model()->index(row, 1).data().toString();
+    QString age = ui->tableView->model()->index(row, 2).data().toString();
+    QString gender = ui->tableView->model()->index(row, 3).data().toString();
+QString number = ui->tableView->model()->index(row, 4).data().toString();
+QString operatingmode=ui->tableView->model()->index(row,6).data().toString();
+QString operatingmethod=ui->tableView->model()->index(row,5).data().toString();
+QString operatingeye=ui->tableView->model()->index(row,7).data().toString();
+viewp->viewPatdata(id,name,age,gender,number,operatingmethod,operatingmode,operatingeye);
+viewp->show();
 }

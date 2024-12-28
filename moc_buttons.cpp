@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'buttons.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.4)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'buttons.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.15.4. It"
+#error "This file was generated using the moc from 5.14.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Buttons_t {
-    QByteArrayData data[12];
-    char stringdata0[237];
+    QByteArrayData data[18];
+    char stringdata0[369];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,7 +43,13 @@ QT_MOC_LITERAL(7, 118, 25), // "on_ButCalibration_clicked"
 QT_MOC_LITERAL(8, 144, 22), // "on_ButSettings_clicked"
 QT_MOC_LITERAL(9, 167, 22), // "on_ButPatTouch_clicked"
 QT_MOC_LITERAL(10, 190, 23), // "on_ButLensTouch_clicked"
-QT_MOC_LITERAL(11, 214, 22) // "on_ButDocTouch_clicked"
+QT_MOC_LITERAL(11, 214, 22), // "on_ButDocTouch_clicked"
+QT_MOC_LITERAL(12, 237, 20), // "on_ButPatAdd_clicked"
+QT_MOC_LITERAL(13, 258, 20), // "on_ButDocAdd_clicked"
+QT_MOC_LITERAL(14, 279, 21), // "on_ButLensAdd_clicked"
+QT_MOC_LITERAL(15, 301, 23), // "on_ButPatDelete_clicked"
+QT_MOC_LITERAL(16, 325, 21), // "on_ButPatEdit_clicked"
+QT_MOC_LITERAL(17, 347, 21) // "on_ButPatView_clicked"
 
     },
     "Buttons\0on_ButPatient_clicked\0\0"
@@ -51,7 +57,10 @@ QT_MOC_LITERAL(11, 214, 22) // "on_ButDocTouch_clicked"
     "on_ButMeasure_clicked\0on_ButCalculator_clicked\0"
     "on_ButCalibration_clicked\0"
     "on_ButSettings_clicked\0on_ButPatTouch_clicked\0"
-    "on_ButLensTouch_clicked\0on_ButDocTouch_clicked"
+    "on_ButLensTouch_clicked\0on_ButDocTouch_clicked\0"
+    "on_ButPatAdd_clicked\0on_ButDocAdd_clicked\0"
+    "on_ButLensAdd_clicked\0on_ButPatDelete_clicked\0"
+    "on_ButPatEdit_clicked\0on_ButPatView_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +70,7 @@ static const uint qt_meta_data_Buttons[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,18 +78,30 @@ static const uint qt_meta_data_Buttons[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    0,   65,    2, 0x08 /* Private */,
-       4,    0,   66,    2, 0x08 /* Private */,
-       5,    0,   67,    2, 0x08 /* Private */,
-       6,    0,   68,    2, 0x08 /* Private */,
-       7,    0,   69,    2, 0x08 /* Private */,
-       8,    0,   70,    2, 0x08 /* Private */,
-       9,    0,   71,    2, 0x08 /* Private */,
-      10,    0,   72,    2, 0x08 /* Private */,
-      11,    0,   73,    2, 0x08 /* Private */,
+       1,    0,   94,    2, 0x08 /* Private */,
+       3,    0,   95,    2, 0x08 /* Private */,
+       4,    0,   96,    2, 0x08 /* Private */,
+       5,    0,   97,    2, 0x08 /* Private */,
+       6,    0,   98,    2, 0x08 /* Private */,
+       7,    0,   99,    2, 0x08 /* Private */,
+       8,    0,  100,    2, 0x08 /* Private */,
+       9,    0,  101,    2, 0x08 /* Private */,
+      10,    0,  102,    2, 0x08 /* Private */,
+      11,    0,  103,    2, 0x08 /* Private */,
+      12,    0,  104,    2, 0x08 /* Private */,
+      13,    0,  105,    2, 0x08 /* Private */,
+      14,    0,  106,    2, 0x08 /* Private */,
+      15,    0,  107,    2, 0x08 /* Private */,
+      16,    0,  108,    2, 0x08 /* Private */,
+      17,    0,  109,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -99,7 +120,7 @@ void Buttons::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
         auto *_t = static_cast<Buttons *>(_o);
-        (void)_t;
+        Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_ButPatient_clicked(); break;
         case 1: _t->on_ButDoctor_clicked(); break;
@@ -111,10 +132,16 @@ void Buttons::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 7: _t->on_ButPatTouch_clicked(); break;
         case 8: _t->on_ButLensTouch_clicked(); break;
         case 9: _t->on_ButDocTouch_clicked(); break;
+        case 10: _t->on_ButPatAdd_clicked(); break;
+        case 11: _t->on_ButDocAdd_clicked(); break;
+        case 12: _t->on_ButLensAdd_clicked(); break;
+        case 13: _t->on_ButPatDelete_clicked(); break;
+        case 14: _t->on_ButPatEdit_clicked(); break;
+        case 15: _t->on_ButPatView_clicked(); break;
         default: ;
         }
     }
-    (void)_a;
+    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Buttons::staticMetaObject = { {
@@ -146,13 +173,13 @@ int Buttons::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 16;
     }
     return _id;
 }

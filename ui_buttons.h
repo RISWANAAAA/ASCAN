@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'buttons.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.4
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -119,8 +119,8 @@ public:
         ButPatAdd = new QPushButton(tab_3);
         ButPatAdd->setObjectName(QString::fromUtf8("ButPatAdd"));
         ButPatAdd->setGeometry(QRect(1140, 350, 81, 71));
-        ButPatAdd->setStyleSheet(QString::fromUtf8("image: url(:/image/adddoctor.png);\n"
-"border:none;\n"
+        ButPatAdd->setStyleSheet(QString::fromUtf8("border:none;\n"
+"image: url(:/image/addperson.png);\n"
 "background-color:transparent;"));
         ButPatDelete = new QPushButton(tab_3);
         ButPatDelete->setObjectName(QString::fromUtf8("ButPatDelete"));
@@ -283,7 +283,7 @@ public:
 
         retranslateUi(Buttons);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Buttons);

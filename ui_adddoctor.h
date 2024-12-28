@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'adddoctor.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.4
+** Created by: Qt User Interface Compiler version 5.14.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -36,8 +36,8 @@ public:
     QLabel *lbllenspre3;
     QComboBox *comboBox_4;
     QLabel *lbllensformula;
-    QPushButton *Butsave;
-    QPushButton *ButBack;
+    QPushButton *ButDocSave;
+    QPushButton *ButDocBack;
 
     void setupUi(QDialog *AddDoctor)
     {
@@ -115,12 +115,12 @@ public:
 "font: 75 20pt \"Ubuntu\";\n"
 "font:bold;"));
         lbllensformula->setAlignment(Qt::AlignCenter);
-        Butsave = new QPushButton(AddDoctor);
-        Butsave->setObjectName(QString::fromUtf8("Butsave"));
-        Butsave->setGeometry(QRect(110, 560, 181, 111));
-        ButBack = new QPushButton(AddDoctor);
-        ButBack->setObjectName(QString::fromUtf8("ButBack"));
-        ButBack->setGeometry(QRect(390, 560, 181, 111));
+        ButDocSave = new QPushButton(AddDoctor);
+        ButDocSave->setObjectName(QString::fromUtf8("ButDocSave"));
+        ButDocSave->setGeometry(QRect(110, 560, 181, 111));
+        ButDocBack = new QPushButton(AddDoctor);
+        ButDocBack->setObjectName(QString::fromUtf8("ButDocBack"));
+        ButDocBack->setGeometry(QRect(390, 560, 181, 111));
 
         retranslateUi(AddDoctor);
 
@@ -139,8 +139,8 @@ public:
         lbllenspre2->setText(QCoreApplication::translate("AddDoctor", "Lens Preset Two", nullptr));
         lbllenspre3->setText(QCoreApplication::translate("AddDoctor", "Lens Preset Three", nullptr));
         lbllensformula->setText(QCoreApplication::translate("AddDoctor", "Primary Formula", nullptr));
-        Butsave->setText(QCoreApplication::translate("AddDoctor", "SAVE", nullptr));
-        ButBack->setText(QCoreApplication::translate("AddDoctor", "BACK", nullptr));
+        ButDocSave->setText(QCoreApplication::translate("AddDoctor", "SAVE", nullptr));
+        ButDocBack->setText(QCoreApplication::translate("AddDoctor", "BACK", nullptr));
     } // retranslateUi
 
 };

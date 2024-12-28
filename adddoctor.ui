@@ -239,7 +239,7 @@ font:bold;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="Butsave">
+  <widget class="QPushButton" name="ButDocSave">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -252,7 +252,7 @@ font:bold;</string>
     <string>SAVE</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="ButBack">
+  <widget class="QPushButton" name="ButDocBack">
    <property name="geometry">
     <rect>
      <x>390</x>

@@ -20,6 +20,8 @@ SOURCES += \
     addlens.cpp \
     addpatient.cpp \
     buttons.cpp \
+    currentdocpat.cpp \
+    loaddoctor.cpp \
     main.cpp \
     mainwindow.cpp \
     viewdoc.cpp \
@@ -30,6 +32,8 @@ HEADERS += \
     addlens.h \
     addpatient.h \
     buttons.h \
+    currentdocpat.h \
+    loaddoctor.h \
     mainwindow.h \
     viewdoc.h \
     viewpatient.h
@@ -39,6 +43,8 @@ FORMS += \
     addlens.ui \
     addpatient.ui \
     buttons.ui \
+    currentdocpat.ui \
+    loaddoctor.ui \
     mainwindow.ui \
     viewdoc.ui \
     viewpatient.ui

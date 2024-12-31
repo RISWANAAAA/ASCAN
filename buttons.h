@@ -14,6 +14,7 @@
 #include"addlens.h"
 #include"viewdoc.h"
 #include"viewpatient.h"
+#include"currentdocpat.h"
 
 namespace Ui {
 class Buttons;
@@ -31,10 +32,14 @@ public:
     void loaddoctorsql();
     void loadlenssql();
 
+    void loadcurrentdoctor();
+    void currentFormulaButton(int button);
+    void rx_patidname(const QString &id,const QString &name);
 protected:
-    void mousePressEvent(QMouseEvent *event) override;
-    void mouseMoveEvent(QMouseEvent *event) override;
-    void mouseReleaseEvent(QMouseEvent *event) override;
+ bool eventFilter(QObject *obj, QEvent *event) override; // Declaration of eventFilter
+ void mouseReleaseEvent(QMouseEvent *event) override;
+ void mousePressEvent(QMouseEvent *event) override;
+ void mouseMoveEvent(QMouseEvent *event) override;
 
 
 private slots:
@@ -70,6 +75,28 @@ private slots:
 
     void on_ButPatView_clicked();
 
+    void on_ButDocDelete_clicked();
+
+    void on_ButDocEdit_clicked();
+
+    void on_ButDocView_clicked();
+
+    void on_ButLensDelete_clicked();
+
+    void on_ButLensEdit_clicked();
+
+    void on_ButCurrent_clicked();
+
+    void on_ButSRKT_clicked();
+
+    void on_ButSRKII_clicked();
+
+    void on_ButHofferQ_clicked();
+
+    void on_ButHolladay_clicked();
+
+    void on_ButHaigis_clicked();
+
 private:
     Ui::Buttons *ui;
     QPushButton *buttons[7];
@@ -85,6 +112,8 @@ AddDoctor *doc;
 AddLens *lens;
 viewdoc *viewd;
 viewpatient *viewp;
+QSqlDatabase mydb1;
+currentDocPat *Current;
 
 };
 

@@ -18,12 +18,20 @@ class AddDoctor : public QDialog
 public:
     explicit AddDoctor(QWidget *parent = nullptr);
     ~AddDoctor();
+    void doctoreditdetails(const QString &id,const QString &name,const QString &lens1,const QString &lens2,const QString &lens3,const QString &formula);
 
 private slots:
     void on_ButDocBack_clicked();
 
+    void on_ButDocSave_clicked();
+signals:
+    void updatedocsql();
+    void savedocsql();
+
 private:
     Ui::AddDoctor *ui;
+    QSqlDatabase mydb1;
+
 };
 
 #endif // ADDDOCTOR_H

@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>currentDocPat</class>
+ <widget class="QDialog" name="currentDocPat">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>855</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>10</y>
+     <width>861</width>
+     <height>701</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 117, 143);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldocformula">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:bold;
+font:30px;</string>
+   </property>
+   <property name="text">
+    <string>Formula  :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbla0">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>510</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>a0</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ButDocSql">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>100</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Butok">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>640</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">image: url(:/image/images/backward.png);
+background-color:transparent;
+border:none;</string>
+   </property>
+   <property name="text">
+    <string>ok</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblpatidvalue">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>160</y>
+     <width>231</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(196, 215, 242);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblsf">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>450</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>SF</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linerk2">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>500</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblcurdoc">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>30</y>
+     <width>271</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font:30px;
+font:bold;
+border-radius:30px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>Current Doctor</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbla2">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>630</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>a2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldocname">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:bold;
+font:30px;</string>
+   </property>
+   <property name="text">
+    <string>Name     :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldocid">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>140</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:bold;
+font:30px;</string>
+   </property>
+   <property name="text">
+    <string>ID            :</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="ButPatSql">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>110</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linerk">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>570</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblasrkii">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>330</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>ASKII</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblpatid">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>160</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:bold;
+font:30px;</string>
+   </property>
+   <property name="text">
+    <string>ID            :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linea1">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>570</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblcurpat">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>30</y>
+     <width>271</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+font:30px;
+font:bold;
+border-radius:30px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>Current Patient</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linelk">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>360</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblrk">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>580</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>RK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbllk1_2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>370</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>LK</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbllk1">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>230</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>LK1</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linelk2">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>290</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblpatlayout">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>20</y>
+     <width>421</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:20px;
+border:1px solid white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblpatname">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>110</y>
+     <width>131</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font:bold;
+font:30px;</string>
+   </property>
+   <property name="text">
+    <string>Name     :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linelk1">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>220</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbla1">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>570</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>a1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbllk2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>300</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>LK2</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblrk2">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>510</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>RK2</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linea2">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>630</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineasrkii">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>330</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linerk1">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>430</y>
+     <width>181</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>230</y>
+     <width>401</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 117, 143);</string>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>Tab 1</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>Tab 2</string>
+    </attribute>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>Page</string>
+    </attribute>
+   </widget>
+  </widget>
+  <widget class="QLineEdit" name="linea0">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>510</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineasrkt">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>270</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldoclayout">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>431</width>
+     <height>681</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:20px;
+border:1px solid white;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="linesf">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>450</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblrk1">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>440</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>RK1</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldocformulaValue">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>190</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(196, 215, 242);</string>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineacd">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>390</y>
+     <width>131</width>
+     <height>41</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblacd">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>390</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>ACD</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lbldocidvalue">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>150</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(196, 215, 242);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblasrkt">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>270</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(153, 193, 241);
+border-radius:10px;
+border:3px solid black;</string>
+   </property>
+   <property name="text">
+    <string>ASRKT</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>81</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>lblpatlayout</zorder>
+  <zorder>lblpatname</zorder>
+  <zorder>lbllk2</zorder>
+  <zorder>lblrk</zorder>
+  <zorder>lbldoclayout</zorder>
+  <zorder>lblpatidvalue</zorder>
+  <zorder>lbldocname</zorder>
+  <zorder>lblrk2</zorder>
+  <zorder>lblrk1</zorder>
+  <zorder>lbllk1</zorder>
+  <zorder>tabWidget</zorder>
+  <zorder>lbldocformula</zorder>
+  <zorder>lblcurpat</zorder>
+  <zorder>linelk</zorder>
+  <zorder>lineasrkt</zorder>
+  <zorder>linelk2</zorder>
+  <zorder>linerk</zorder>
+  <zorder>linea0</zorder>
+  <zorder>linelk1</zorder>
+  <zorder>lineasrkii</zorder>
+  <zorder>linea2</zorder>
+  <zorder>linerk2</zorder>
+  <zorder>linea1</zorder>
+  <zorder>linerk1</zorder>
+  <zorder>linesf</zorder>
+  <zorder>lineacd</zorder>
+  <zorder>ButDocSql</zorder>
+  <zorder>ButPatSql</zorder>
+  <zorder>Butok</zorder>
+  <zorder>lbldocformulaValue</zorder>
+  <zorder>lblpatid</zorder>
+  <zorder>lbldocidvalue</zorder>
+  <zorder>lbllk1_2</zorder>
+  <zorder>lbldocid</zorder>
+  <zorder>lblasrkt</zorder>
+  <zorder>lbla1</zorder>
+  <zorder>lbla2</zorder>
+  <zorder>lbla0</zorder>
+  <zorder>lblacd</zorder>
+  <zorder>lblsf</zorder>
+  <zorder>lblasrkii</zorder>
+  <zorder>lblcurdoc</zorder>
+  <zorder>pushButton</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

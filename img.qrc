@@ -16,5 +16,7 @@
         <file>update.png</file>
         <file>viewbut.png</file>
         <file>edit.png</file>
+        <file>selectformula.png</file>
+        <file>unselectformula.png</file>
     </qresource>
 </RCC>

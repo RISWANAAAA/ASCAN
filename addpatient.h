@@ -27,6 +27,8 @@ private slots:
 signals:
     void updatepatsql();
     void savepatsql();
+    void saveforload();
+    void savepatid_name(const QString &id,const QString &name);
 private:
     Ui::addPatient *ui;
     QSqlDatabase mydb1;

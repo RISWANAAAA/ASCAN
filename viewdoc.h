@@ -14,6 +14,10 @@ class viewdoc : public QDialog
 public:
     explicit viewdoc(QWidget *parent = nullptr);
     ~viewdoc();
+  void viewdocdetails(const QString &id,const QString &name,const QString &lens1,const QString &lens2,const QString &lens3,const QString &formula);
+
+private slots:
+  void on_BUTOK_clicked();
 
 private:
     Ui::viewdoc *ui;

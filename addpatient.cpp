@@ -244,6 +244,8 @@ void addPatient::on_ButPatSave_clicked()
         } else {
             qDebug() << "New record added successfully with ID:" << id;
             emit savepatsql();
+            emit saveforload();
+            emit savepatid_name(id,Name);
 
         }
     }

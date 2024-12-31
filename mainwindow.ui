@@ -33,17 +33,46 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>300</y>
-      <width>331</width>
-      <height>101</height>
+      <x>1070</x>
+      <y>590</y>
+      <width>181</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(3, 96, 126);</string>
+     <string notr="true">background-color: rgb(0, 117, 143);</string>
     </property>
     <property name="text">
      <string>WELCOME</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>20</y>
+      <width>201</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 117, 143);</string>
+    </property>
+    <property name="text">
+     <string>Add Patient</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>260</y>
+      <width>401</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 117, 143);</string>
     </property>
    </widget>
   </widget>

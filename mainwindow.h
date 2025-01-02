@@ -23,9 +23,12 @@ public:
     void loadlastpatient();
     void select_patient();
     void updateComboBox(const QString id, const QString &name);
+    void updateComboBox1(const QString id, const QString &name);
 
 void saveSelectedPatient(const QString &id, const QString &name);
+
 void onComboBoxSelectionChanged();
+void onPatientSelected(const QString &id);
 private slots:
     void on_pushButton_clicked();
 
@@ -35,6 +38,7 @@ private slots:
 signals:
     void sendpatientsql();
     void sendpatientid(const QString &id,const QString &name);
+    void emitpatientidname(const QString &id,const QString &name);
 
 private:
     Ui::MainWindow *ui;
@@ -44,6 +48,8 @@ private:
     QSqlDatabase mydb1;
     QString id;
     QString name;
+    QString lastSelectedPatientID;
+    QString lastSelectedPatientName;
 
 };
 #endif // MAINWINDOW_H

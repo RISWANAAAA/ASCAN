@@ -32,9 +32,11 @@ public:
     void loaddoctorsql();
     void loadlenssql();
 
-    void loadcurrentdoctor();
     void currentFormulaButton(int button);
+public slots:
     void rx_patidname(const QString &id,const QString &name);
+    void rx_currentpatidname(const QString &id,const QString &name);
+
 protected:
  bool eventFilter(QObject *obj, QEvent *event) override; // Declaration of eventFilter
  void mouseReleaseEvent(QMouseEvent *event) override;
@@ -96,7 +98,9 @@ private slots:
     void on_ButHolladay_clicked();
 
     void on_ButHaigis_clicked();
-
+signals:
+    void sendidtocurrent(const QString &id);
+    void tx_currentpatdoc_main(const QString &id);
 private:
     Ui::Buttons *ui;
     QPushButton *buttons[7];

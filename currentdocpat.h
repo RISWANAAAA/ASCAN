@@ -19,8 +19,7 @@ public:
     explicit currentDocPat(QWidget *parent = nullptr);
     ~currentDocPat();
     void rx_fromloaddoc();
-    void loadlastpatient();
-    void loadlastdoctor();
+   void loadcurrentpatientid(const QString &id);
 
 
 private slots:
@@ -31,10 +30,13 @@ signals:
     void loaddocsqldatabase();
     void loadpatsqldatabase();
     void tx_main();
+    void tx_patdocnameid_main(const QString &id,const QString &name);
 private:
     Ui::currentDocPat *ui;
     loaddoctor *load;
     QSqlDatabase mydb1;
+    QString lastSelectedPatientID;
+    QString lastSelectedPatientName;
 
 };
 

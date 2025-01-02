@@ -56,6 +56,8 @@ Buttons::Buttons(QWidget *parent) :
     connect(lens,&AddLens::updatelenssql,this,&Buttons::loadlenssql);
     connect(lens,&AddLens::savelenssql,this,&Buttons::loadlenssql);
     connect(Current,&currentDocPat::tx_main,this,&Buttons::loadpatientsql);
+    connect(this,&Buttons::sendidtocurrent,Current,&currentDocPat::loadcurrentpatientid);
+    connect(Current,&currentDocPat::tx_patdocnameid_main,this,&Buttons::rx_currentpatidname);
     ui->tableView->viewport()->installEventFilter(this);
     ui->tableView_2->viewport()->installEventFilter(this);
     ui->tableView_3->viewport()->installEventFilter(this);
@@ -93,6 +95,27 @@ Buttons::Buttons(QWidget *parent) :
 Buttons::~Buttons()
 {
     delete ui;
+}
+void Buttons::rx_patidname(const QString &id,const QString &name)
+{
+    qDebug()<<"the received patient id and name is"<<id<<name;
+
+ui->linepatid->setText(id);
+ui->linepatname->setText(name);
+qDebug()<<"the received patient id and name is"<<id<<name;
+emit sendidtocurrent(id);
+
+
+
+}
+
+void Buttons::rx_currentpatidname(const QString &id, const QString &name)
+{
+    ui->linepatid->setText(id);
+    ui->linepatname->setText(name);
+    qDebug()<<"the received from the current doctor & patient id and name is"<<id<<name;
+    emit tx_currentpatdoc_main(id);
+
 }
 bool Buttons::eventFilter(QObject *obj, QEvent *event)
 {
@@ -237,26 +260,42 @@ void Buttons::updateButtonState()
 
 void Buttons::loadpatientsql()
 {
+    QSqlDatabase db = QSqlDatabase::database();
+    QSqlTableModel *model = new QSqlTableModel(this, db);
+    model->setTable("ascanpatient");  // Patient table name
+    model->setSort(model->fieldIndex("id"), Qt::AscendingOrder);  // Sort by 'id' in ascending order
+    model->select();
+    ui->tableView->setGeometry(0, 60, 1280, 580);  // Example position and size
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
 
-        QSqlDatabase db = QSqlDatabase::database();
-        QSqlTableModel *model = new QSqlTableModel(this, db);
-        model->setTable("ascanpatient");  // Patient table name
-        model->select();
-      ui->tableView->setGeometry(0,60, 1280,600);  // Example position and size
-        ui->tableView->setModel(model);
-        ui->tableView->resizeColumnsToContents();
-        // Adjust position (move down by 20 pixels)
-          QRect geometry = ui->tableView->geometry();
-          geometry.moveTop(geometry.top() + 5);  // Move the tableView 20 pixels down
-          ui->tableView->setGeometry(geometry);
-          // Add spacing between columns
-            int columnCount = model->columnCount();
-            for (int i = 0; i < columnCount; ++i) {
-                int currentWidth = ui->tableView->columnWidth(i);
-                ui->tableView->setColumnWidth(i, currentWidth + 10); // Add 10 pixels of extra width for spacing
-            }
+    // Adjust position (move down by 5 pixels)
+    QRect geometry = ui->tableView->geometry();
+    geometry.moveTop(geometry.top() + 5);  // Move the tableView 5 pixels down
+    ui->tableView->setGeometry(geometry);
 
+    // Add spacing between columns
+    int columnCount = model->columnCount();
+    for (int i = 0; i < columnCount; ++i) {
+        int currentWidth = ui->tableView->columnWidth(i);
+        ui->tableView->setColumnWidth(i, currentWidth + 10); // Add 10 pixels of extra width for spacing
+    }
+
+    // Find and select the most recently updated row (assuming 'lastupdate' column exists)
+    QString lastUpdatedColumn = "lastupdate"; // Replace with your actual column name
+    if (model->rowCount() > 0) {
+        QSqlQuery query(db);
+        query.prepare(QString("SELECT ROWID FROM ascanpatient ORDER BY id ASC LIMIT 1"));
+        if (query.exec() && query.next()) {
+            int lastUpdatedRowId = query.value(0).toInt() - 1; // Convert to 0-based index
+            QModelIndex lastUpdatedIndex = model->index(lastUpdatedRowId, 0); // Assuming the first column is safe
+            ui->tableView->scrollTo(lastUpdatedIndex);
+            ui->tableView->selectRow(lastUpdatedRowId); // Highlight the row
+        }
+    }
 }
+
+
 
 void Buttons::loaddoctorsql()
 {
@@ -265,7 +304,7 @@ void Buttons::loaddoctorsql()
     QSqlTableModel *model = new QSqlTableModel(this, db);
     model->setTable("ascandoctor");  // Patient table name
     model->select();
-  ui->tableView_2->setGeometry(0,60, 1280,600);  // Example position and size
+  ui->tableView_2->setGeometry(0,60, 1280,580);  // Example position and size
     ui->tableView_2->setModel(model);
     ui->tableView_2->resizeColumnsToContents();
     // Adjust position (move down by 20 pixels)
@@ -278,6 +317,7 @@ void Buttons::loaddoctorsql()
             int currentWidth = ui->tableView_2->columnWidth(i);
             ui->tableView_2->setColumnWidth(i, currentWidth + 180); // Add 10 pixels of extra width for spacing
         }
+
 }
 
 void Buttons::loadlenssql()
@@ -286,7 +326,7 @@ void Buttons::loadlenssql()
     QSqlTableModel *model = new QSqlTableModel(this, db);
     model->setTable("ascanlens");  // Patient table name
     model->select();
-  ui->tableView_3->setGeometry(0,60, 1280,600);  // Example position and size
+  ui->tableView_3->setGeometry(0,60, 1280,580);  // Example position and size
     ui->tableView_3->setModel(model);
     ui->tableView_3->resizeColumnsToContents();
     // Adjust position (move down by 20 pixels)
@@ -301,50 +341,8 @@ void Buttons::loadlenssql()
         }
 }
 
-void Buttons::loadcurrentdoctor()
-{
-    ui->tableView_2->setGeometry(0,0,581,601);  // Example position and size
-    QSqlTableModel *model = new QSqlTableModel(this, mydb1);
-    model->setTable("ascandoctor");  // Patient table name
 
-    // Select data from the table
-    model->select();
-    // Set the model for the table view
-    ui->tableView_2->setModel(model);
 
-    // Hide all columns initially
-    for (int col = 0; col < model->columnCount(); ++col) {
-        ui->tableView->setColumnHidden(col, true);
-    }
-
-    // Show only the "id" and "name" columns
-    int idColumn = model->fieldIndex("doctorid");
-    int nameColumn = model->fieldIndex("name");
-
-    if (idColumn != -1) {
-        ui->tableView->setColumnHidden(idColumn, false);
-    }
-
-    if (nameColumn != -1) {
-        ui->tableView->setColumnHidden(nameColumn, false);
-    }
-
-    // Resize the columns to fit their content
-    ui->tableView->resizeColumnsToContents();
-
-    // Adjust the table view position (move down by 80 pixels)
-    QRect geometry = ui->tableView->geometry();
-    geometry.moveTop(geometry.top() + 80);
-    ui->tableView->setGeometry(geometry);
-
-    // Optional: Adjust the spacing of the visible columns
-    int idColumnWidth = ui->tableView->columnWidth(idColumn);
-    int nameColumnWidth = ui->tableView->columnWidth(nameColumn);
-
-    // Set the width with extra space if needed
-    ui->tableView->setColumnWidth(idColumn, idColumnWidth + 180);
-    ui->tableView->setColumnWidth(nameColumn, nameColumnWidth + 180);
-}
 
 void Buttons::currentFormulaButton(int button)
 {
@@ -407,13 +405,7 @@ void Buttons::currentFormulaButton(int button)
 
 }
 
-void Buttons::rx_patidname(const QString &id, const QString &name)
-{
-ui->linepatid->setText(id);
-ui->linepatname->setText(name);
 
-
-}
 
 
 

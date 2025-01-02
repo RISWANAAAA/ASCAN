@@ -2595,14 +2595,14 @@ border:3px solid white;</string>
   <zorder>ButCalibration</zorder>
   <zorder>ButSettings</zorder>
   <zorder>ButCurrent</zorder>
-  <zorder>linepatid</zorder>
   <zorder>lblpatid</zorder>
-  <zorder>linepatname</zorder>
   <zorder>lblpatname</zorder>
   <zorder>linedocid</zorder>
   <zorder>lbldocid</zorder>
   <zorder>linedocname</zorder>
   <zorder>lbldocname</zorder>
+  <zorder>linepatid</zorder>
+  <zorder>linepatname</zorder>
  </widget>
  <resources/>
  <connections/>

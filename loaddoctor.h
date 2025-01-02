@@ -33,8 +33,15 @@ private slots:
     void on_ButDocTouch_clicked();
     void on_pushButton_clicked();
 
+    void on_ButDocLoad_clicked();
+
+
+    void on_ButPatLoad_clicked();
+
 signals:
     void sendpatcurrent();
+    void loadpatid(const QString &id);
+    void loaddocid(const QString &id);
 private:
     Ui::loaddoctor *ui;
     QSqlDatabase mydb1;
@@ -42,6 +49,10 @@ private:
     bool patassistive=false;
     addPatient *Addp;
     AddDoctor *addd;
+     QString idPatColumn1;
+     QString namePatColumn;
+     QString nameDocColumn;
+    QString idDocColumn1;
 
 };
 

@@ -6,12 +6,18 @@ AddDoctor::AddDoctor(QWidget *parent) :
     ui(new Ui::AddDoctor)
 {
     ui->setupUi(this);
+getlens();
+l=new AddLens;
+    // Open the database connection
     mydb1 = QSqlDatabase::addDatabase("QSQLITE");
-       mydb1.setDatabaseName("your_database_path_here");  // Replace with your actual database path
-       if (!mydb1.open()) {
-           qDebug() << "Failed to open the database:" << mydb1.lastError().text();
-           return;
-       }
+    mydb1.setDatabaseName(PATH);  // Replace with your actual database path
+
+    if (!mydb1.open()) {
+        qDebug() << "Failed to open the database:" << mydb1.lastError().text();
+        return;
+    }
+    qDebug() << "Database opened successfully.";
+    connect(l,&AddLens::tx_insertiol,this,&AddDoctor::getinsertiol);
 
 }
 
@@ -19,6 +25,53 @@ AddDoctor::~AddDoctor()
 {
     delete ui;
 }
+
+void AddDoctor::getlens()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(PATH);  // Ensure PATH is correctly defined
+
+    if (!db.open()) {
+        qWarning() << "Failed to open database:" << db.lastError().text();
+        return;
+    }
+
+    QSqlQuery query("SELECT IOL FROM ascanlensss");  // Correct table name
+    QStringList lensTypes;
+
+    if (query.exec()) {
+        while (query.next()) {
+            lensTypes << query.value(0).toString();  // Collect lens types
+        }
+
+        // Update combo boxes with lens types
+        ui->comboBox->clear();
+        ui->comboBox_2->clear();
+        ui->comboBox_3->clear();
+
+        ui->comboBox->addItems(lensTypes);
+        ui->comboBox_2->addItems(lensTypes);
+        ui->comboBox_3->addItems(lensTypes);
+
+        qDebug() << "Lens types retrieved from SQL:" << lensTypes;
+    } else {
+        qWarning() << "Database error:" << query.lastError().text();
+    }
+}
+
+void AddDoctor::getinsertiol(const QString &text)
+{
+
+        qDebug() << text << "those are new inserted IOL////////////////////////////////////";
+
+        // Add the received text to the combo boxes
+        ui->comboBox->addItem(text);
+        ui->comboBox_2->addItem(text);
+        ui->comboBox_3->addItem(text);
+
+
+}
+
 
 void AddDoctor::doctoreditdetails(const QString &id, const QString &name, const QString &lens1, const QString &lens2, const QString &lens3, const QString &formula)
 {
@@ -34,6 +87,10 @@ void AddDoctor::on_ButDocBack_clicked()
 {
     this->close();
 }
+
+
+
+
 
 void AddDoctor::on_ButDocSave_clicked()
 {
@@ -92,6 +149,7 @@ void AddDoctor::on_ButDocSave_clicked()
              emit updatedocsql();
         } else {
             qDebug() << "New record added successfully with ID:" << docid;
+            emit lastupdatedocid_buttons(docid,docname);
 emit savedocsql();
         }
     }

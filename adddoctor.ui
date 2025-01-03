@@ -145,6 +145,11 @@ font:bold;</string>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(4, 54, 22);
+font: 75 20pt &quot;Ubuntu&quot;;
+font:bold;color: rgb(255, 255, 255);</string>
+   </property>
   </widget>
   <widget class="QComboBox" name="comboBox_2">
    <property name="geometry">
@@ -154,6 +159,11 @@ font:bold;</string>
      <width>291</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(4, 54, 22);
+font: 75 20pt &quot;Ubuntu&quot;;
+font:bold;color: rgb(255, 255, 255);</string>
    </property>
   </widget>
   <widget class="QLabel" name="lbllenspre2">
@@ -186,6 +196,11 @@ font:bold;</string>
      <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(4, 54, 22);
+font: 75 20pt &quot;Ubuntu&quot;;
+font:bold;color: rgb(255, 255, 255);</string>
+   </property>
   </widget>
   <widget class="QLabel" name="lbllenspre3">
    <property name="geometry">
@@ -217,6 +232,46 @@ font:bold;</string>
      <height>41</height>
     </rect>
    </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(4, 54, 22);
+font: 75 27pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);
+font:bold;</string>
+   </property>
+   <item>
+    <property name="text">
+     <string>SRKT</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SRKTII</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>HOFFER Q</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>HOLLADAY</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>HAIGIS</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="lbllensformula">
    <property name="geometry">

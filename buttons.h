@@ -33,9 +33,14 @@ public:
     void loadlenssql();
 
     void currentFormulaButton(int button);
+    void loadLastDoctor();
+    void rx_lastdoctid(const QString &id,const QString &docname);
+    void rx_currentButton(const QString &id,const QString &docname);
+    void rx_insertiol_addlens(const QString &text);
 public slots:
     void rx_patidname(const QString &id,const QString &name);
     void rx_currentpatidname(const QString &id,const QString &name);
+    void onDoctorDetailsChanged();
 
 protected:
  bool eventFilter(QObject *obj, QEvent *event) override; // Declaration of eventFilter
@@ -101,6 +106,7 @@ private slots:
 signals:
     void sendidtocurrent(const QString &id);
     void tx_currentpatdoc_main(const QString &id);
+    void tx_docidtocurrent(const QString &id);
 private:
     Ui::Buttons *ui;
     QPushButton *buttons[7];

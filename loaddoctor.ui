@@ -96,7 +96,7 @@ border:none;</string>
     <widget class="QPushButton" name="ButDocLoad">
      <property name="geometry">
       <rect>
-       <x>260</x>
+       <x>230</x>
        <y>630</y>
        <width>121</width>
        <height>61</height>
@@ -114,9 +114,9 @@ border:none;</string>
     <widget class="QTableView" name="tableView_2">
      <property name="geometry">
       <rect>
-       <x>40</x>
+       <x>0</x>
        <y>0</y>
-       <width>591</width>
+       <width>701</width>
        <height>701</height>
       </rect>
      </property>
@@ -178,8 +178,8 @@ background-color:transparent;</string>
     <widget class="QPushButton" name="ButPatLoad">
      <property name="geometry">
       <rect>
-       <x>230</x>
-       <y>610</y>
+       <x>220</x>
+       <y>620</y>
        <width>121</width>
        <height>61</height>
       </rect>

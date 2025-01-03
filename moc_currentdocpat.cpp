@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_currentDocPat_t {
-    QByteArrayData data[10];
-    char stringdata0[132];
+    QByteArrayData data[14];
+    char stringdata0[188];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,14 +40,20 @@ QT_MOC_LITERAL(4, 53, 7), // "tx_main"
 QT_MOC_LITERAL(5, 61, 20), // "tx_patdocnameid_main"
 QT_MOC_LITERAL(6, 82, 2), // "id"
 QT_MOC_LITERAL(7, 85, 4), // "name"
-QT_MOC_LITERAL(8, 90, 20), // "on_ButDocSql_clicked"
-QT_MOC_LITERAL(9, 111, 20) // "on_ButPatSql_clicked"
+QT_MOC_LITERAL(8, 90, 19), // "tx_docidname_button"
+QT_MOC_LITERAL(9, 110, 20), // "on_ButDocSql_clicked"
+QT_MOC_LITERAL(10, 131, 20), // "on_ButPatSql_clicked"
+QT_MOC_LITERAL(11, 152, 16), // "on_Butok_clicked"
+QT_MOC_LITERAL(12, 169, 12), // "onTabChanged"
+QT_MOC_LITERAL(13, 182, 5) // "index"
 
     },
     "currentDocPat\0loaddocsqldatabase\0\0"
     "loadpatsqldatabase\0tx_main\0"
     "tx_patdocnameid_main\0id\0name\0"
-    "on_ButDocSql_clicked\0on_ButPatSql_clicked"
+    "tx_docidname_button\0on_ButDocSql_clicked\0"
+    "on_ButPatSql_clicked\0on_Butok_clicked\0"
+    "onTabChanged\0index"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,32 +63,38 @@ static const uint qt_meta_data_currentDocPat[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       4,       // signalCount
+       5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x06 /* Public */,
-       3,    0,   45,    2, 0x06 /* Public */,
-       4,    0,   46,    2, 0x06 /* Public */,
-       5,    2,   47,    2, 0x06 /* Public */,
+       1,    0,   59,    2, 0x06 /* Public */,
+       3,    0,   60,    2, 0x06 /* Public */,
+       4,    0,   61,    2, 0x06 /* Public */,
+       5,    2,   62,    2, 0x06 /* Public */,
+       8,    2,   67,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       8,    0,   52,    2, 0x08 /* Private */,
-       9,    0,   53,    2, 0x08 /* Private */,
+       9,    0,   72,    2, 0x08 /* Private */,
+      10,    0,   73,    2, 0x08 /* Private */,
+      11,    0,   74,    2, 0x08 /* Private */,
+      12,    1,   75,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    6,    7,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    6,    7,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   13,
 
        0        // eod
 };
@@ -97,8 +109,11 @@ void currentDocPat::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 1: _t->loadpatsqldatabase(); break;
         case 2: _t->tx_main(); break;
         case 3: _t->tx_patdocnameid_main((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
-        case 4: _t->on_ButDocSql_clicked(); break;
-        case 5: _t->on_ButPatSql_clicked(); break;
+        case 4: _t->tx_docidname_button((*reinterpret_cast< const QString(*)>(_a[1])),(*reinterpret_cast< const QString(*)>(_a[2]))); break;
+        case 5: _t->on_ButDocSql_clicked(); break;
+        case 6: _t->on_ButPatSql_clicked(); break;
+        case 7: _t->on_Butok_clicked(); break;
+        case 8: _t->onTabChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -128,6 +143,13 @@ void currentDocPat::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
             using _t = void (currentDocPat::*)(const QString & , const QString & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&currentDocPat::tx_patdocnameid_main)) {
                 *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (currentDocPat::*)(const QString & , const QString & );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&currentDocPat::tx_docidname_button)) {
+                *result = 4;
                 return;
             }
         }
@@ -163,13 +185,13 @@ int currentDocPat::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 9;
     }
     return _id;
 }
@@ -197,6 +219,13 @@ void currentDocPat::tx_patdocnameid_main(const QString & _t1, const QString & _t
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+
+// SIGNAL 4
+void currentDocPat::tx_docidname_button(const QString & _t1, const QString & _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 4, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

@@ -69,7 +69,6 @@ public:
     QLabel *lblacd;
     QLabel *lbldocidvalue;
     QLabel *lblasrkt;
-    QPushButton *pushButton;
 
     void setupUi(QDialog *currentDocPat)
     {
@@ -97,8 +96,10 @@ public:
         Butok = new QPushButton(currentDocPat);
         Butok->setObjectName(QString::fromUtf8("Butok"));
         Butok->setGeometry(QRect(760, 640, 71, 51));
-        Butok->setStyleSheet(QString::fromUtf8("image: url(:/image/images/backward.png);\n"
-"background-color:transparent;\n"
+        Butok->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 54, 22);\n"
+"color: rgb(255, 255, 255);\n"
+"font: 75 12pt \"Ubuntu\";\n"
+"font:bold;\n"
 "border:none;"));
         lblpatidvalue = new QLabel(currentDocPat);
         lblpatidvalue->setObjectName(QString::fromUtf8("lblpatidvalue"));
@@ -287,9 +288,6 @@ public:
         lblasrkt->setStyleSheet(QString::fromUtf8("background-color: rgb(153, 193, 241);\n"
 "border-radius:10px;\n"
 "border:3px solid black;"));
-        pushButton = new QPushButton(currentDocPat);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(10, 20, 81, 61));
         label->raise();
         lblpatlayout->raise();
         lblpatname->raise();
@@ -333,11 +331,10 @@ public:
         lblsf->raise();
         lblasrkii->raise();
         lblcurdoc->raise();
-        pushButton->raise();
 
         retranslateUi(currentDocPat);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(currentDocPat);
@@ -378,7 +375,6 @@ public:
         lblacd->setText(QCoreApplication::translate("currentDocPat", "ACD", nullptr));
         lbldocidvalue->setText(QString());
         lblasrkt->setText(QCoreApplication::translate("currentDocPat", "ASRKT", nullptr));
-        pushButton->setText(QCoreApplication::translate("currentDocPat", "Back", nullptr));
     } // retranslateUi
 
 };

@@ -20,17 +20,21 @@ public:
     ~currentDocPat();
     void rx_fromloaddoc();
    void loadcurrentpatientid(const QString &id);
-
+   void loadcurrentdoctorid(const QString &id);
 
 private slots:
     void on_ButDocSql_clicked();
 
     void on_ButPatSql_clicked();
+    void on_Butok_clicked();
+    void onTabChanged(int index);
+
 signals:
     void loaddocsqldatabase();
     void loadpatsqldatabase();
     void tx_main();
     void tx_patdocnameid_main(const QString &id,const QString &name);
+    void tx_docidname_button(const QString &id,const QString &name);
 private:
     Ui::currentDocPat *ui;
     loaddoctor *load;

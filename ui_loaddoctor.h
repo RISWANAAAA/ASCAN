@@ -71,13 +71,13 @@ public:
 "border:none;"));
         ButDocLoad = new QPushButton(tab);
         ButDocLoad->setObjectName(QString::fromUtf8("ButDocLoad"));
-        ButDocLoad->setGeometry(QRect(260, 630, 121, 61));
+        ButDocLoad->setGeometry(QRect(230, 630, 121, 61));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
         tableView_2 = new QTableView(tab_2);
         tableView_2->setObjectName(QString::fromUtf8("tableView_2"));
-        tableView_2->setGeometry(QRect(40, 0, 591, 701));
+        tableView_2->setGeometry(QRect(0, 0, 701, 701));
         ButPatAdd = new QPushButton(tab_2);
         ButPatAdd->setObjectName(QString::fromUtf8("ButPatAdd"));
         ButPatAdd->setGeometry(QRect(500, 450, 81, 71));
@@ -98,7 +98,7 @@ public:
 "background-color:transparent;"));
         ButPatLoad = new QPushButton(tab_2);
         ButPatLoad->setObjectName(QString::fromUtf8("ButPatLoad"));
-        ButPatLoad->setGeometry(QRect(230, 610, 121, 61));
+        ButPatLoad->setGeometry(QRect(220, 620, 121, 61));
         tabWidget->addTab(tab_2, QString());
 
         retranslateUi(loaddoctor);

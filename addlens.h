@@ -26,6 +26,7 @@ private slots:
 signals:
     void updatelenssql();
     void savelenssql();
+    void tx_insertiol(const QString &iol);
 private:
     Ui::AddLens *ui;
     QSqlDatabase mydb1;

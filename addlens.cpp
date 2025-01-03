@@ -54,7 +54,7 @@ void AddLens::on_ButLensSave_clicked()
     QSqlQuery query;
 
     // Check if record exists
-    query.prepare("SELECT COUNT(*) FROM ascanlens WHERE IOL = :iol");
+    query.prepare("SELECT COUNT(*) FROM ascanlensss WHERE IOL = :iol");
     query.bindValue(":iol", iol);
     if (!query.exec()) {
         qDebug() << "Failed to execute record existence check:" << query.lastError().text();
@@ -74,12 +74,12 @@ void AddLens::on_ButLensSave_clicked()
     // Save to database
     if (recordExists) {
         // Update existing record
-        query.prepare("UPDATE ascanlens SET Type = :type, "
+        query.prepare("UPDATE ascanlensss SET Type = :type, "
                       "ASRKT = :ASRKT, ASRKII = :ASRKII, ACD = :ACD, SF = :SF, a0 = :a0, a1 = :a1, a2 = :a2 "
                       "WHERE IOL = :iol");
     } else {
         // Add new record
-        query.prepare("INSERT INTO ascanlens (IOL, Type, ASRKT, ASRKII, ACD, SF, a0, a1, a2) "
+        query.prepare("INSERT INTO ascanlensss (IOL, Type, ASRKT, ASRKII, ACD, SF, a0, a1, a2) "
                       "VALUES (:iol, :type, :ASRKT, :ASRKII, :ACD, :SF, :a0, :a1, :a2)");
     }
 
@@ -105,8 +105,11 @@ void AddLens::on_ButLensSave_clicked()
         } else {
             qDebug() << "New record added successfully with ID:" << iol;
             emit savelenssql();
+            emit tx_insertiol(iol);
 
         }
     }
+    // Close the database connection
+      QSqlDatabase::database().close();
 
 }

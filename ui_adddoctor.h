@@ -85,9 +85,15 @@ public:
         comboBox = new QComboBox(AddDoctor);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(340, 220, 291, 41));
+        comboBox->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 54, 22);\n"
+"font: 75 20pt \"Ubuntu\";\n"
+"font:bold;color: rgb(255, 255, 255);"));
         comboBox_2 = new QComboBox(AddDoctor);
         comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
         comboBox_2->setGeometry(QRect(340, 290, 291, 41));
+        comboBox_2->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 54, 22);\n"
+"font: 75 20pt \"Ubuntu\";\n"
+"font:bold;color: rgb(255, 255, 255);"));
         lbllenspre2 = new QLabel(AddDoctor);
         lbllenspre2->setObjectName(QString::fromUtf8("lbllenspre2"));
         lbllenspre2->setGeometry(QRect(120, 290, 221, 41));
@@ -98,6 +104,9 @@ public:
         comboBox_3 = new QComboBox(AddDoctor);
         comboBox_3->setObjectName(QString::fromUtf8("comboBox_3"));
         comboBox_3->setGeometry(QRect(360, 380, 271, 41));
+        comboBox_3->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 54, 22);\n"
+"font: 75 20pt \"Ubuntu\";\n"
+"font:bold;color: rgb(255, 255, 255);"));
         lbllenspre3 = new QLabel(AddDoctor);
         lbllenspre3->setObjectName(QString::fromUtf8("lbllenspre3"));
         lbllenspre3->setGeometry(QRect(120, 380, 241, 41));
@@ -106,8 +115,20 @@ public:
 "font:bold;"));
         lbllenspre3->setAlignment(Qt::AlignCenter);
         comboBox_4 = new QComboBox(AddDoctor);
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
+        comboBox_4->addItem(QString());
         comboBox_4->setObjectName(QString::fromUtf8("comboBox_4"));
         comboBox_4->setGeometry(QRect(340, 460, 291, 41));
+        comboBox_4->setFocusPolicy(Qt::NoFocus);
+        comboBox_4->setLayoutDirection(Qt::LeftToRight);
+        comboBox_4->setAutoFillBackground(false);
+        comboBox_4->setStyleSheet(QString::fromUtf8("background-color: rgb(4, 54, 22);\n"
+"font: 75 27pt \"Ubuntu\";\n"
+"color: rgb(255, 255, 255);\n"
+"font:bold;"));
         lbllensformula = new QLabel(AddDoctor);
         lbllensformula->setObjectName(QString::fromUtf8("lbllensformula"));
         lbllensformula->setGeometry(QRect(120, 460, 221, 41));
@@ -138,6 +159,12 @@ public:
         lbllenspre1->setText(QCoreApplication::translate("AddDoctor", "Lens Preset One", nullptr));
         lbllenspre2->setText(QCoreApplication::translate("AddDoctor", "Lens Preset Two", nullptr));
         lbllenspre3->setText(QCoreApplication::translate("AddDoctor", "Lens Preset Three", nullptr));
+        comboBox_4->setItemText(0, QCoreApplication::translate("AddDoctor", "SRKT", nullptr));
+        comboBox_4->setItemText(1, QCoreApplication::translate("AddDoctor", "SRKTII", nullptr));
+        comboBox_4->setItemText(2, QCoreApplication::translate("AddDoctor", "HOFFER Q", nullptr));
+        comboBox_4->setItemText(3, QCoreApplication::translate("AddDoctor", "HOLLADAY", nullptr));
+        comboBox_4->setItemText(4, QCoreApplication::translate("AddDoctor", "HAIGIS", nullptr));
+
         lbllensformula->setText(QCoreApplication::translate("AddDoctor", "Primary Formula", nullptr));
         ButDocSave->setText(QCoreApplication::translate("AddDoctor", "SAVE", nullptr));
         ButDocBack->setText(QCoreApplication::translate("AddDoctor", "BACK", nullptr));

@@ -87,8 +87,10 @@ border:3px solid black;</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">image: url(:/image/images/backward.png);
-background-color:transparent;
+    <string notr="true">background-color: rgb(4, 54, 22);
+color: rgb(255, 255, 255);
+font: 75 12pt &quot;Ubuntu&quot;;
+font:bold;
 border:none;</string>
    </property>
    <property name="text">
@@ -520,7 +522,7 @@ border:3px solid black;</string>
     <string notr="true">background-color: rgb(0, 117, 143);</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -681,19 +683,6 @@ border:3px solid black;</string>
     <string>ASRKT</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>81</width>
-     <height>61</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Back</string>
-   </property>
-  </widget>
   <zorder>label</zorder>
   <zorder>lblpatlayout</zorder>
   <zorder>lblpatname</zorder>
@@ -737,7 +726,6 @@ border:3px solid black;</string>
   <zorder>lblsf</zorder>
   <zorder>lblasrkii</zorder>
   <zorder>lblcurdoc</zorder>
-  <zorder>pushButton</zorder>
  </widget>
  <resources/>
  <connections/>

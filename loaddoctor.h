@@ -53,7 +53,8 @@ private:
      QString namePatColumn;
      QString nameDocColumn;
     QString idDocColumn1;
-
+    int selectedRow = -1;     // Store the index of the selected row
+        QString selectedID;
 };
 
 #endif // LOADDOCTOR_H

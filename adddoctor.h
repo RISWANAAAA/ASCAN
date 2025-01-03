@@ -7,6 +7,7 @@
 #include<QSqlDatabase>
 #include<QSqlError>
 #include<QSqlQuery>
+#include"addlens.h"
 namespace Ui {
 class AddDoctor;
 }
@@ -18,8 +19,10 @@ class AddDoctor : public QDialog
 public:
     explicit AddDoctor(QWidget *parent = nullptr);
     ~AddDoctor();
-    void doctoreditdetails(const QString &id,const QString &name,const QString &lens1,const QString &lens2,const QString &lens3,const QString &formula);
+    void getlens();
+    void getinsertiol(const QString &text);
 
+    void doctoreditdetails(const QString &id,const QString &name,const QString &lens1,const QString &lens2,const QString &lens3,const QString &formula);
 private slots:
     void on_ButDocBack_clicked();
 
@@ -27,10 +30,11 @@ private slots:
 signals:
     void updatedocsql();
     void savedocsql();
-
+    void lastupdatedocid_buttons(const QString &id,const QString &docname);
 private:
     Ui::AddDoctor *ui;
     QSqlDatabase mydb1;
+    AddLens *l;
 
 };
 

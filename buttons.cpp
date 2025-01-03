@@ -49,15 +49,22 @@ Buttons::Buttons(QWidget *parent) :
     loadpatientsql();
     loaddoctorsql();
     loadlenssql();
+    loadLastDoctor();
     connect(pat,&addPatient::updatepatsql,this,&Buttons::loadpatientsql);
     connect(pat,&addPatient::savepatsql,this,&Buttons::loadpatientsql);
     connect(doc,&AddDoctor::updatedocsql,this,&Buttons::loaddoctorsql);
     connect(doc,&AddDoctor::savedocsql,this,&Buttons::loaddoctorsql);
     connect(lens,&AddLens::updatelenssql,this,&Buttons::loadlenssql);
     connect(lens,&AddLens::savelenssql,this,&Buttons::loadlenssql);
+    connect(lens,&AddLens::tx_insertiol,this,&Buttons::rx_insertiol_addlens);
     connect(Current,&currentDocPat::tx_main,this,&Buttons::loadpatientsql);
     connect(this,&Buttons::sendidtocurrent,Current,&currentDocPat::loadcurrentpatientid);
     connect(Current,&currentDocPat::tx_patdocnameid_main,this,&Buttons::rx_currentpatidname);
+    connect(Current,&currentDocPat::tx_docidname_button,this,&Buttons::rx_currentButton);
+    connect(ui->linedocid, &QLineEdit::textChanged, this, &Buttons::onDoctorDetailsChanged);
+      connect(ui->linedocname, &QLineEdit::textChanged, this, &Buttons::onDoctorDetailsChanged);
+    connect(this,&Buttons::tx_docidtocurrent,Current,&currentDocPat::loadcurrentdoctorid);
+    connect(doc,&AddDoctor::lastupdatedocid_buttons,this,&Buttons::rx_lastdoctid);
     ui->tableView->viewport()->installEventFilter(this);
     ui->tableView_2->viewport()->installEventFilter(this);
     ui->tableView_3->viewport()->installEventFilter(this);
@@ -90,6 +97,8 @@ Buttons::Buttons(QWidget *parent) :
     // Apply the layout to the content widget of the scroll area
     ui->scrollAreaWidgetContents->setLayout(layout);
     currentFormulaButton(1);
+    emit tx_docidtocurrent(ui->linedocid->text());
+
 }
 
 Buttons::~Buttons()
@@ -265,7 +274,7 @@ void Buttons::loadpatientsql()
     model->setTable("ascanpatient");  // Patient table name
     model->setSort(model->fieldIndex("id"), Qt::AscendingOrder);  // Sort by 'id' in ascending order
     model->select();
-    ui->tableView->setGeometry(0, 60, 1280, 580);  // Example position and size
+    ui->tableView->setGeometry(0, 60, 1280, 550);  // Example position and size
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
 
@@ -304,7 +313,7 @@ void Buttons::loaddoctorsql()
     QSqlTableModel *model = new QSqlTableModel(this, db);
     model->setTable("ascandoctor");  // Patient table name
     model->select();
-  ui->tableView_2->setGeometry(0,60, 1280,580);  // Example position and size
+  ui->tableView_2->setGeometry(0,60, 1280,550);  // Example position and size
     ui->tableView_2->setModel(model);
     ui->tableView_2->resizeColumnsToContents();
     // Adjust position (move down by 20 pixels)
@@ -315,7 +324,7 @@ void Buttons::loaddoctorsql()
         int columnCount = model->columnCount();
         for (int i = 0; i < columnCount; ++i) {
             int currentWidth = ui->tableView_2->columnWidth(i);
-            ui->tableView_2->setColumnWidth(i, currentWidth + 180); // Add 10 pixels of extra width for spacing
+            ui->tableView_2->setColumnWidth(i, currentWidth + 130); // Add 10 pixels of extra width for spacing
         }
 
 }
@@ -324,9 +333,9 @@ void Buttons::loadlenssql()
 {
     QSqlDatabase db = QSqlDatabase::database();
     QSqlTableModel *model = new QSqlTableModel(this, db);
-    model->setTable("ascanlens");  // Patient table name
+    model->setTable("ascanlensss");  // Patient table name
     model->select();
-  ui->tableView_3->setGeometry(0,60, 1280,580);  // Example position and size
+  ui->tableView_3->setGeometry(0,60, 1280,550);  // Example position and size
     ui->tableView_3->setModel(model);
     ui->tableView_3->resizeColumnsToContents();
     // Adjust position (move down by 20 pixels)
@@ -337,7 +346,7 @@ void Buttons::loadlenssql()
         int columnCount = model->columnCount();
         for (int i = 0; i < columnCount; ++i) {
             int currentWidth = ui->tableView_3->columnWidth(i);
-            ui->tableView_3->setColumnWidth(i, currentWidth + 180); // Add 10 pixels of extra width for spacing
+            ui->tableView_3->setColumnWidth(i, currentWidth + 130); // Add 10 pixels of extra width for spacing
         }
 }
 
@@ -494,6 +503,82 @@ void Buttons::on_ButLensAdd_clicked()
 {
     lens->show();
 }
+void Buttons::loadLastDoctor()
+{
+    QSqlQuery query(mydb1);
+
+    // Retrieve the most recently updated or inserted doctor
+    QString queryStr = R"(
+        SELECT Doctorid, Name
+        FROM ascandoctor
+        WHERE lastupdate = (SELECT MAX(lastupdate) FROM ascandoctor)
+           OR Doctorid = (SELECT MAX(Doctorid) FROM ascandoctor)
+        ORDER BY lastupdate DESC, Doctorid DESC
+        LIMIT 1
+    )";
+
+    if (!query.exec(queryStr)) {
+        qDebug() << "Database query failed:" << query.lastError().text();
+        return;
+    }
+
+    if (query.next()) {
+        QString doctorId = query.value(0).toString();
+        QString doctorName = query.value(1).toString();
+        ui->linedocid->setText(doctorId);
+        ui->linedocname->setText(doctorName);
+        qDebug() << "Last updated or inserted doctor loaded: ID -" << doctorId << ", Name -" << doctorName;
+    } else {
+        qDebug() << "Query executed but no rows returned.";
+        ui->linedocid->clear();
+        ui->linedocname->clear();
+    }
+}
+void Buttons::onDoctorDetailsChanged()
+{
+    QString doctorId = ui->linedocid->text();
+    QString doctorName = ui->linedocname->text();
+
+    if (doctorId.isEmpty() || doctorName.isEmpty()) {
+        return; // Do nothing if any field is empty
+    }
+
+    QSqlQuery query(mydb1);
+    QString updateStr = QString(R"(
+        UPDATE ascandoctor
+        SET Name = :doctorName, lastupdate = CURRENT_TIMESTAMP
+        WHERE Doctorid = :doctorId
+    )");
+
+    query.prepare(updateStr);
+    query.bindValue(":doctorId", doctorId);
+    query.bindValue(":doctorName", doctorName);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to update doctor details:" << query.lastError().text();
+    } else {
+        qDebug() << "Doctor details updated: ID -" << doctorId << ", Name -" << doctorName;
+    }
+}
+void Buttons::rx_lastdoctid(const QString &id,const QString &docname)
+{
+    ui->linedocid->setText(id);
+    ui->linedocname->setText(docname);
+    emit tx_docidtocurrent(ui->linedocid->text());
+}
+
+void Buttons::rx_currentButton(const QString &id, const QString &docname)
+{
+    ui->linedocid->setText(id);
+    ui->linedocname->setText(docname);
+    loaddoctorsql();
+}
+
+void Buttons::rx_insertiol_addlens(const QString &text)
+{
+   doc->getinsertiol(text);
+}
+
 
 void Buttons::on_ButPatDelete_clicked()
 {

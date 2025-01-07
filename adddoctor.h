@@ -8,6 +8,8 @@
 #include<QSqlError>
 #include<QSqlQuery>
 #include"addlens.h"
+#include"textkeypad.h"
+#include"intkeypad.h"
 namespace Ui {
 class AddDoctor;
 }
@@ -35,6 +37,8 @@ private:
     Ui::AddDoctor *ui;
     QSqlDatabase mydb1;
     AddLens *l;
+   textkeypad *text;
+   intkeypad *key;
 
 };
 

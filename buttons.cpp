@@ -17,6 +17,7 @@ Buttons::Buttons(QWidget *parent) :
     viewd=new viewdoc;
     viewp=new viewpatient;
     Current=new currentDocPat;
+    formula=new CalFormula;
    mydb1 = QSqlDatabase::addDatabase("QSQLITE");
     mydb1.setDatabaseName(PATH);  // Replace with your actual path
 
@@ -44,6 +45,7 @@ Buttons::Buttons(QWidget *parent) :
     ui->ButDocDelete->hide();
     ui->ButDocEdit->hide();
     ui->ButDocView->hide();
+
     // Set the initial button state
     updateButtonState();
     loadpatientsql();
@@ -65,6 +67,8 @@ Buttons::Buttons(QWidget *parent) :
       connect(ui->linedocname, &QLineEdit::textChanged, this, &Buttons::onDoctorDetailsChanged);
     connect(this,&Buttons::tx_docidtocurrent,Current,&currentDocPat::loadcurrentdoctorid);
     connect(doc,&AddDoctor::lastupdatedocid_buttons,this,&Buttons::rx_lastdoctid);
+    // In your constructor
+
     ui->tableView->viewport()->installEventFilter(this);
     ui->tableView_2->viewport()->installEventFilter(this);
     ui->tableView_3->viewport()->installEventFilter(this);
@@ -98,7 +102,8 @@ Buttons::Buttons(QWidget *parent) :
     ui->scrollAreaWidgetContents->setLayout(layout);
     currentFormulaButton(1);
     emit tx_docidtocurrent(ui->linedocid->text());
-
+    getlens();
+on_ButSRKT_clicked();
 }
 
 Buttons::~Buttons()
@@ -398,6 +403,7 @@ void Buttons::currentFormulaButton(int button)
     if(button==1){
         ui->ButSRKII->setStyleSheet(SelectFormula);
         ui->ButSRKII->move(1030,200);
+
     }
     if(button == 2){
         ui->ButHofferQ->setStyleSheet(SelectFormula);
@@ -558,6 +564,136 @@ void Buttons::onDoctorDetailsChanged()
         qDebug() << "Failed to update doctor details:" << query.lastError().text();
     } else {
         qDebug() << "Doctor details updated: ID -" << doctorId << ", Name -" << doctorName;
+    }
+}
+
+void Buttons::updateLineEdit(QComboBox *comboBox, QLineEdit *lineEdit)
+{
+    QString selectedName = comboBox->currentText();
+
+    // SQL query to fetch data based on the selected value
+    QSqlQuery query;
+    query.prepare("SELECT ASRKT FROM ascanlensss WHERE IOL = :value");
+    query.bindValue(":value", selectedName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            // Retrieve the ASRKT value
+            QString asrktValue = query.value("ASRKT").toString();
+
+            // Display the fetched value in the specified line edit
+            lineEdit->setText(asrktValue);
+        } else {
+            qDebug() << "No data found for the selected lens type!";
+            lineEdit->clear(); // Clear the line edit if no data is found
+        }
+    } else {
+        // Log the query error
+        qDebug() << "SQL Query Error:" << query.lastError().text();
+    }
+}
+
+void Buttons::updateLineEditSRKT(QComboBox *comboBox, QLineEdit *lineEdit)
+{
+    QString selectedName = comboBox->currentText();
+
+    // SQL query to fetch data based on the selected value
+    QSqlQuery query;
+    query.prepare("SELECT ASRKII FROM ascanlensss WHERE IOL = :value");
+    query.bindValue(":value", selectedName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            // Retrieve the ASRKT value
+            QString asrktValue = query.value("ASRKII").toString();
+
+            // Display the fetched value in the specified line edit
+            lineEdit->setText(asrktValue);
+        } else {
+            qDebug() << "No data found for the selected lens type!";
+            lineEdit->clear(); // Clear the line edit if no data is found
+        }
+    } else {
+        // Log the query error
+        qDebug() << "SQL Query Error:" << query.lastError().text();
+    }
+}
+
+void Buttons::updateLineEditHOFFERQ(QComboBox *comboBox, QLineEdit *lineEdit)
+{
+    QString selectedName = comboBox->currentText();
+
+    // SQL query to fetch data based on the selected value
+    QSqlQuery query;
+    query.prepare("SELECT ACD FROM ascanlensss WHERE IOL = :value");
+    query.bindValue(":value", selectedName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            // Retrieve the ASRKT value
+            QString asrktValue = query.value("ACD").toString();
+
+            // Display the fetched value in the specified line edit
+            lineEdit->setText(asrktValue);
+        } else {
+            qDebug() << "No data found for the selected lens type!";
+            lineEdit->clear(); // Clear the line edit if no data is found
+        }
+    } else {
+        // Log the query error
+        qDebug() << "SQL Query Error:" << query.lastError().text();
+    }
+}
+
+void Buttons::updateLineEditHOLLADAY(QComboBox *comboBox, QLineEdit *lineEdit)
+{
+    QString selectedName = comboBox->currentText();
+
+    // SQL query to fetch data based on the selected value
+    QSqlQuery query;
+    query.prepare("SELECT SF FROM ascanlensss WHERE IOL = :value");
+    query.bindValue(":value", selectedName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            // Retrieve the ASRKT value
+            QString asrktValue = query.value("SF").toString();
+
+            // Display the fetched value in the specified line edit
+            lineEdit->setText(asrktValue);
+        } else {
+            qDebug() << "No data found for the selected lens type!";
+            lineEdit->clear(); // Clear the line edit if no data is found
+        }
+    } else {
+        // Log the query error
+        qDebug() << "SQL Query Error:" << query.lastError().text();
+    }
+}
+
+void Buttons::updateLineEditHAIGIS(QComboBox *comboBox, QLineEdit *lineEdit)
+{
+    QString selectedName = comboBox->currentText();
+
+    // SQL query to fetch data based on the selected value
+    QSqlQuery query;
+    query.prepare("SELECT a0 FROM ascanlensss WHERE IOL = :value");
+    query.bindValue(":value", selectedName);
+
+    if (query.exec()) {
+        if (query.next()) {
+            // Retrieve the ASRKT value
+            QString asrktValue = query.value("a0").toString();
+
+            // Display the fetched value in the specified line edit
+            lineEdit->setText(asrktValue);
+        } else {
+            qDebug() << "No data found for the selected lens type!";
+            lineEdit->clear(); // Clear the line edit if no data is found
+        }
+    } else {
+        // Log the query error
+        qDebug() << "SQL Query Error:" << query.lastError().text();
     }
 }
 void Buttons::rx_lastdoctid(const QString &id,const QString &docname)
@@ -742,24 +878,347 @@ void Buttons::on_ButCurrent_clicked()
 void Buttons::on_ButSRKT_clicked()
 {
     currentFormulaButton(0);
+    ui->lbllens1aconst->setText("ACONST");
+    ui->lbllens2aconst->setText("ACONST");
+    ui->lbllen3aconst->setText("ACONST");
+    setupconnectionsSRKT();
+    updateLineEditSRKT(ui->combolens1,ui->linelens1aconst);
+    updateLineEditSRKT(ui->combolens2,ui->linelens2aconst);
+    updateLineEditSRKT(ui->combolens3,ui->linelens3aconst3);
+    double aconst = ui->linelens1aconst->text().toDouble();
+    double aconst1 = ui->linelens2aconst->text().toDouble();
+    double aconst2 = ui->linelens3aconst3->text().toDouble();
+
+    // Remove the previous connections to avoid multiple signal-slot connections
+    disconnect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    disconnect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    disconnect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    disconnect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    disconnect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    disconnect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+
+    // Connect the textChanged signals
+    connect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    connect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    connect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    connect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    connect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    connect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButSRKT_clicked);
+    rx_value = ui->linerx->text().toDouble();
+    axial_length = ui->lineacd->text().toDouble();
+    keratometer = ui->linek->text().toDouble();
+    QLineEdit *emm1 = ui->linelens1emm;
+    QLineEdit *emm2 = ui->linelens2emm2;
+    QLineEdit *emm3 = ui->linelens3emm3;
+
+    // Perform SRKII calculations for Lens 1
+    QLineEdit* lineEditsPower[5] = {ui->linelens1iol1, ui->linelens1iol2, ui->linelens1iol3, ui->linelens1iol4, ui->linelens1iol5};
+    QLineEdit* lineEditsError[5] = {ui->linelens1ref1, ui->linelens1ref2, ui->linelens1ref3, ui->linelens1ref4, ui->linelens1ref5};
+    formula->SRKTCalc(axial_length, aconst, keratometer, rx_value, lineEditsPower, lineEditsError, emm1);
+
+    // Perform SRKII calculations for Lens 2
+    QLineEdit* lineEditsPower2[5] = {ui->linelens2iol1, ui->linelens2iol2, ui->linelens2iol3, ui->linelens2iol4, ui->linelens2iol5};
+    QLineEdit* lineEditsError2[5] = {ui->linelens2ref1, ui->linelens2ref2, ui->linelens2ref3, ui->linelens2ref4, ui->linelens2ref5};
+    formula->SRKTCalc(axial_length, aconst1, keratometer, rx_value, lineEditsPower2, lineEditsError2, emm2);
+
+    // Perform SRKII calculations for Lens 3
+    QLineEdit* lineEditsPower3[5] = {ui->linelens3iol1, ui->linelens3iol2, ui->linelens3iol3, ui->linelens3iol4, ui->linelens3iol5};
+    QLineEdit* lineEditsError3[5] = {ui->linelens3ref1, ui->linelens3ref2, ui->linelens3ref3, ui->linelens3ref4, ui->linelens3ref5};
+    formula->SRKTCalc(axial_length, aconst2, keratometer, rx_value, lineEditsPower3, lineEditsError3, emm3);
 }
 
 void Buttons::on_ButSRKII_clicked()
 {
-currentFormulaButton(1);
+    currentFormulaButton(1);
+
+    // Re-read the updated A-constant values from the QLineEdit widgets
+    double aconst = ui->linelens1aconst->text().toDouble();
+    double aconst1 = ui->linelens2aconst->text().toDouble();
+    double aconst2 = ui->linelens3aconst3->text().toDouble();
+
+    // Remove the previous connections to avoid multiple signal-slot connections
+    disconnect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    disconnect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    disconnect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    disconnect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    disconnect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    disconnect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+
+    // Connect the textChanged signals
+    connect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    connect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    connect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    connect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    connect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+    connect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButSRKII_clicked);
+
+    rx_value = ui->linerx->text().toDouble();
+    axial_length = ui->lineacd->text().toDouble();
+    keratometer = ui->linek->text().toDouble();
+
+    // Update the labels
+    ui->lbllens1aconst->setText("ACONST");
+    ui->lbllens2aconst->setText("ACONST");
+    ui->lbllen3aconst->setText("ACONST");
+
+    // Setup connections and update the line edits
+    setupconnectionsSRKT();
+    updateLineEdit(ui->combolens1, ui->linelens1aconst);
+    updateLineEdit(ui->combolens2, ui->linelens2aconst);
+    updateLineEdit(ui->combolens3, ui->linelens3aconst3);
+
+    QLineEdit *emm1 = ui->linelens1emm;
+    QLineEdit *emm2 = ui->linelens2emm2;
+    QLineEdit *emm3 = ui->linelens3emm3;
+
+    // Perform SRKII calculations for Lens 1
+    QLineEdit* lineEditsPower[5] = {ui->linelens1iol1, ui->linelens1iol2, ui->linelens1iol3, ui->linelens1iol4, ui->linelens1iol5};
+    QLineEdit* lineEditsError[5] = {ui->linelens1ref1, ui->linelens1ref2, ui->linelens1ref3, ui->linelens1ref4, ui->linelens1ref5};
+    formula->SRKIICalc(axial_length, aconst, keratometer, rx_value, lineEditsPower, lineEditsError, emm1);
+
+    // Perform SRKII calculations for Lens 2
+    QLineEdit* lineEditsPower2[5] = {ui->linelens2iol1, ui->linelens2iol2, ui->linelens2iol3, ui->linelens2iol4, ui->linelens2iol5};
+    QLineEdit* lineEditsError2[5] = {ui->linelens2ref1, ui->linelens2ref2, ui->linelens2ref3, ui->linelens2ref4, ui->linelens2ref5};
+    formula->SRKIICalc(axial_length, aconst1, keratometer, rx_value, lineEditsPower2, lineEditsError2, emm2);
+
+    // Perform SRKII calculations for Lens 3
+    QLineEdit* lineEditsPower3[5] = {ui->linelens3iol1, ui->linelens3iol2, ui->linelens3iol3, ui->linelens3iol4, ui->linelens3iol5};
+    QLineEdit* lineEditsError3[5] = {ui->linelens3ref1, ui->linelens3ref2, ui->linelens3ref3, ui->linelens3ref4, ui->linelens3ref5};
+    formula->SRKIICalc(axial_length, aconst2, keratometer, rx_value, lineEditsPower3, lineEditsError3, emm3);
+
+    // Uncomment if needed for additional behavior
+    // srkiilinechanged();
 }
+
+
 
 void Buttons::on_ButHofferQ_clicked()
 {
 currentFormulaButton(2);
+ui->lbllens1aconst->setText("ACD");
+ui->lbllens2aconst->setText("ACD");
+ui->lbllen3aconst->setText("ACD");
+setupconnectionsHOFFERQ();
+updateLineEditHOFFERQ(ui->combolens1,ui->linelens1aconst);
+updateLineEditHOFFERQ(ui->combolens2,ui->linelens2aconst);
+updateLineEditHOFFERQ(ui->combolens3,ui->linelens3aconst3);
+// Re-read the updated A-constant values from the QLineEdit widgets
+double ACD = ui->linelens1aconst->text().toDouble();
+double ACD1 = ui->linelens2aconst->text().toDouble();
+double ACD2 = ui->linelens3aconst3->text().toDouble();
+
+// Remove the previous connections to avoid multiple signal-slot connections
+disconnect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+disconnect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+disconnect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+disconnect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+disconnect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+disconnect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+
+// Connect the textChanged signals
+connect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+connect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+connect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+connect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+connect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+connect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButHofferQ_clicked);
+
+rx_value = ui->linerx->text().toDouble();
+axial_length = ui->lineacd->text().toDouble();
+keratometer = ui->linek->text().toDouble();
+QLineEdit *emm1 = ui->linelens1emm;
+QLineEdit *emm2 = ui->linelens2emm2;
+QLineEdit *emm3 = ui->linelens3emm3;
+
+// Perform SRKII calculations for Lens 1
+QLineEdit* lineEditsPower[5] = {ui->linelens1iol1, ui->linelens1iol2, ui->linelens1iol3, ui->linelens1iol4, ui->linelens1iol5};
+QLineEdit* lineEditsError[5] = {ui->linelens1ref1, ui->linelens1ref2, ui->linelens1ref3, ui->linelens1ref4, ui->linelens1ref5};
+formula->HofferCalc(axial_length, ACD, keratometer, rx_value, lineEditsPower, lineEditsError, emm1);
+
+// Perform SRKII calculations for Lens 2
+QLineEdit* lineEditsPower2[5] = {ui->linelens2iol1, ui->linelens2iol2, ui->linelens2iol3, ui->linelens2iol4, ui->linelens2iol5};
+QLineEdit* lineEditsError2[5] = {ui->linelens2ref1, ui->linelens2ref2, ui->linelens2ref3, ui->linelens2ref4, ui->linelens2ref5};
+formula->HofferCalc(axial_length, ACD1, keratometer, rx_value, lineEditsPower2, lineEditsError2, emm2);
+
+// Perform SRKII calculations for Lens 3
+QLineEdit* lineEditsPower3[5] = {ui->linelens3iol1, ui->linelens3iol2, ui->linelens3iol3, ui->linelens3iol4, ui->linelens3iol5};
+QLineEdit* lineEditsError3[5] = {ui->linelens3ref1, ui->linelens3ref2, ui->linelens3ref3, ui->linelens3ref4, ui->linelens3ref5};
+formula->HofferCalc(axial_length, ACD2, keratometer, rx_value, lineEditsPower3, lineEditsError3, emm3);
+
 }
 
 void Buttons::on_ButHolladay_clicked()
 {
 currentFormulaButton(3);
+ui->lbllens1aconst->setText("SF");
+ui->lbllens2aconst->setText("SF");
+ui->lbllen3aconst->setText("SF");
+double SF = ui->linelens1aconst->text().toDouble();
+double SF1 = ui->linelens2aconst->text().toDouble();
+double SF2 = ui->linelens3aconst3->text().toDouble();
+
+setupconnectionsHOLLADAY();
+updateLineEditHOLLADAY(ui->combolens1,ui->linelens1aconst);
+updateLineEditHOLLADAY(ui->combolens2,ui->linelens2aconst);
+updateLineEditHOLLADAY(ui->combolens3,ui->linelens3aconst3);
+disconnect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+disconnect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+disconnect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+disconnect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+disconnect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+disconnect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+
+// Connect the textChanged signals
+connect(ui->linelens1aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+connect(ui->linelens2aconst, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+connect(ui->linelens3aconst3, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+connect(ui->linerx, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+connect(ui->lineacd, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+connect(ui->linek, &QLineEdit::textChanged, this, &Buttons::on_ButHolladay_clicked);
+
+rx_value = ui->linerx->text().toDouble();
+axial_length = ui->lineacd->text().toDouble();
+keratometer = ui->linek->text().toDouble();
+QLineEdit *emm1 = ui->linelens1emm;
+QLineEdit *emm2 = ui->linelens2emm2;
+QLineEdit *emm3 = ui->linelens3emm3;
+
+// Perform SRKII calculations for Lens 1
+QLineEdit* lineEditsPower[5] = {ui->linelens1iol1, ui->linelens1iol2, ui->linelens1iol3, ui->linelens1iol4, ui->linelens1iol5};
+QLineEdit* lineEditsError[5] = {ui->linelens1ref1, ui->linelens1ref2, ui->linelens1ref3, ui->linelens1ref4, ui->linelens1ref5};
+formula->HolladayCalc(axial_length, SF, keratometer, rx_value, lineEditsPower, lineEditsError, emm1);
+
+// Perform SRKII calculations for Lens 2
+QLineEdit* lineEditsPower2[5] = {ui->linelens2iol1, ui->linelens2iol2, ui->linelens2iol3, ui->linelens2iol4, ui->linelens2iol5};
+QLineEdit* lineEditsError2[5] = {ui->linelens2ref1, ui->linelens2ref2, ui->linelens2ref3, ui->linelens2ref4, ui->linelens2ref5};
+formula->HolladayCalc(axial_length, SF1, keratometer, rx_value, lineEditsPower2, lineEditsError2, emm2);
+
+// Perform SRKII calculations for Lens 3
+QLineEdit* lineEditsPower3[5] = {ui->linelens3iol1, ui->linelens3iol2, ui->linelens3iol3, ui->linelens3iol4, ui->linelens3iol5};
+QLineEdit* lineEditsError3[5] = {ui->linelens3ref1, ui->linelens3ref2, ui->linelens3ref3, ui->linelens3ref4, ui->linelens3ref5};
+formula->HolladayCalc(axial_length, SF2, keratometer, rx_value, lineEditsPower3, lineEditsError3, emm3);
+
 }
 
 void Buttons::on_ButHaigis_clicked()
 {
 currentFormulaButton(4);
+ui->lbllens1aconst->setText("a0");
+ui->lbllens2aconst->setText("a0");
+ui->lbllen3aconst->setText("a0");
+setupconnectionsHAIGIS();
+updateLineEditHAIGIS(ui->combolens1,ui->linelens1aconst);
+updateLineEditHAIGIS(ui->combolens2,ui->linelens2aconst);
+updateLineEditHAIGIS(ui->combolens3,ui->linelens3aconst3);
+}
+void Buttons::getlens()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(PATH);  // Ensure PATH is correctly defined
+
+    if (!db.open()) {
+        qWarning() << "Failed to open database:" << db.lastError().text();
+        return;
+    }
+
+    QSqlQuery query("SELECT IOL FROM ascanlensss");  // Correct table name
+    QStringList lensTypes;
+
+    if (query.exec()) {
+        while (query.next()) {
+            lensTypes << query.value(0).toString();  // Collect lens types
+        }
+
+        // Update combo boxes with lens types
+        ui->combolens1->clear();
+        ui->combolens2->clear();
+        ui->combolens3->clear();
+
+        ui->combolens1->addItems(lensTypes);
+        ui->combolens2->addItems(lensTypes);
+        ui->combolens3->addItems(lensTypes);
+
+        qDebug() << "Lens types retrieved from SQL:" << lensTypes;
+    } else {
+        qWarning() << "Database error:" << query.lastError().text();
+    }
+}
+
+void Buttons::setupConnections()
+{
+    connect(ui->combolens1, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEdit(ui->combolens1, ui->linelens1aconst);
+    });
+    connect(ui->combolens2, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEdit(ui->combolens2, ui->linelens2aconst);
+    });
+    connect(ui->combolens3, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEdit(ui->combolens3, ui->linelens3aconst3);
+    });
+}
+
+void Buttons::setupconnectionsSRKT()
+{
+    connect(ui->combolens1, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditSRKT(ui->combolens1, ui->linelens1aconst);
+    });
+
+    connect(ui->combolens2, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditSRKT(ui->combolens2, ui->linelens2aconst);
+    });
+
+    connect(ui->combolens3, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditSRKT(ui->combolens3, ui->linelens3aconst3);
+    });
+}
+
+void Buttons::setupconnectionsHOFFERQ()
+{
+    connect(ui->combolens1, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOFFERQ(ui->combolens1, ui->linelens1aconst);
+    });
+
+    connect(ui->combolens2, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOFFERQ(ui->combolens2, ui->linelens2aconst);
+    });
+
+    connect(ui->combolens3, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOFFERQ(ui->combolens3, ui->linelens3aconst3);
+    });
+}
+
+void Buttons::setupconnectionsHOLLADAY()
+{
+    connect(ui->combolens1, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOLLADAY(ui->combolens1, ui->linelens1aconst);
+    });
+
+    connect(ui->combolens2, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOLLADAY(ui->combolens2, ui->linelens2aconst);
+    });
+
+    connect(ui->combolens3, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHOLLADAY(ui->combolens3, ui->linelens3aconst3);
+    });
+}
+
+void Buttons::setupconnectionsHAIGIS()
+{
+    connect(ui->combolens1, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHAIGIS(ui->combolens1, ui->linelens1aconst);
+    });
+
+    connect(ui->combolens2, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHAIGIS(ui->combolens2, ui->linelens2aconst);
+    });
+
+    connect(ui->combolens3, &QComboBox::currentTextChanged, this, [this](const QString &text) {
+        updateLineEditHAIGIS(ui->combolens3, ui->linelens3aconst3);
+    });
+
+}
+
+void Buttons::srkiilinechanged()
+{
+
 }

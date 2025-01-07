@@ -8,6 +8,8 @@ AddDoctor::AddDoctor(QWidget *parent) :
     ui->setupUi(this);
 getlens();
 l=new AddLens;
+text=new textkeypad;
+key=new intkeypad;
     // Open the database connection
     mydb1 = QSqlDatabase::addDatabase("QSQLITE");
     mydb1.setDatabaseName(PATH);  // Replace with your actual database path

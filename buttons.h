@@ -15,7 +15,7 @@
 #include"viewdoc.h"
 #include"viewpatient.h"
 #include"currentdocpat.h"
-
+#include"calformula.h"
 namespace Ui {
 class Buttons;
 }
@@ -37,10 +37,24 @@ public:
     void rx_lastdoctid(const QString &id,const QString &docname);
     void rx_currentButton(const QString &id,const QString &docname);
     void rx_insertiol_addlens(const QString &text);
+    void getlens();
+    void setupConnections();
+    void setupconnectionsSRKT();
+    void setupconnectionsHOFFERQ();
+    void setupconnectionsHOLLADAY();
+    void setupconnectionsHAIGIS();
+    void srkiilinechanged();
 public slots:
     void rx_patidname(const QString &id,const QString &name);
     void rx_currentpatidname(const QString &id,const QString &name);
     void onDoctorDetailsChanged();
+    void updateLineEdit(QComboBox *comboBox, QLineEdit *lineEdit);
+    void updateLineEditSRKT(QComboBox *comboBox, QLineEdit *lineEdit);
+    void updateLineEditHOFFERQ(QComboBox *comboBox, QLineEdit *lineEdit);
+
+    void updateLineEditHOLLADAY(QComboBox *comboBox, QLineEdit *lineEdit);
+
+    void updateLineEditHAIGIS(QComboBox *comboBox, QLineEdit *lineEdit);
 
 protected:
  bool eventFilter(QObject *obj, QEvent *event) override; // Declaration of eventFilter
@@ -124,6 +138,10 @@ viewdoc *viewd;
 viewpatient *viewp;
 QSqlDatabase mydb1;
 currentDocPat *Current;
+CalFormula *formula;
+int rx_value;
+int axial_length;
+int keratometer;
 
 };
 

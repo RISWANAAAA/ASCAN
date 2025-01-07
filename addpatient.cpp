@@ -6,6 +6,8 @@ addPatient::addPatient(QWidget *parent) :
     ui(new Ui::addPatient)
 {
     ui->setupUi(this);
+    key=new intkeypad;
+    text=new textkeypad;
     mydb1 = QSqlDatabase::addDatabase("QSQLITE");
        mydb1.setDatabaseName("your_database_path_here");  // Replace with your actual database path
        if (!mydb1.open()) {
@@ -122,6 +124,203 @@ void addPatient::setpatientDetails(const QString &id, const QString &name, const
     ui->CheckLeft->setChecked(eye == "Left");
     ui->CheckRight->setChecked(eye == "Right");
 
+}
+
+bool addPatient::eventFilter(QObject *object, QEvent *event)
+{
+    if(object == ui->linepatid && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+//          key->resize(321,271);
+//          key->move(280,320);
+          key->show();
+          ui->linepatid->setFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatid->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatname && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatname->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatname->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatage && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+  key->show();
+          ui->linepatage->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatage->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatphone && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+          key->show();
+          ui->linepatphone->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatphone->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkl1 && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkl1->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkl1->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkl2 && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkl2->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkl2->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkl->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkl->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkr1 && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkr1->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkr1->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkl->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkl->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
+    else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+
+          ui->linepatkl->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkr2->clearFocus();
+          ui->linepatkl->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+}
 }
 void addPatient::on_ButPatSave_clicked()
 {

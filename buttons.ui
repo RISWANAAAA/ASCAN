@@ -137,7 +137,7 @@ border:none;</string>
     <string notr="true">background-color: rgb(30, 131, 140);</string>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="tab_3">
     <property name="styleSheet">
@@ -964,10 +964,12 @@ border:1px solid white;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
+      <string notr="true">font: 18pt &quot;Ubuntu&quot;;
 background-color: rgb(0, 117, 143);
-border:3px solid white;
-border-radius:10px;</string>
+color: rgb(255, 255, 255);
+font:bold;
+border-radius:10px;
+border:3px solid white;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="linelens1ref1">
@@ -1146,9 +1148,11 @@ border:1px solid white;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
-border:1px solid white;
-border-radius:10px;</string>
+      <string notr="true">font: 18pt &quot;Ubuntu&quot;;
+color: rgb(255, 255, 255);
+font:bold;
+border-radius:10px;
+border:1px solid white;</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="linelens1aconst">
@@ -2141,7 +2145,7 @@ border-radius:10px;
 border:1px solid white;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>45.00</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -2189,7 +2193,7 @@ border-radius:10px;
 border:1px solid white;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>0.00</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -2213,7 +2217,7 @@ border-radius:10px;
 border:3px solid white;</string>
      </property>
      <property name="text">
-      <string>ACD</string>
+      <string>AL</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -2237,7 +2241,7 @@ border-radius:10px;
 border:1px solid white;</string>
      </property>
      <property name="text">
-      <string/>
+      <string>23.00</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

@@ -20,10 +20,13 @@ SOURCES += \
     addlens.cpp \
     addpatient.cpp \
     buttons.cpp \
+    calformula.cpp \
     currentdocpat.cpp \
+    intkeypad.cpp \
     loaddoctor.cpp \
     main.cpp \
     mainwindow.cpp \
+    textkeypad.cpp \
     viewdoc.cpp \
     viewpatient.cpp
 
@@ -32,9 +35,12 @@ HEADERS += \
     addlens.h \
     addpatient.h \
     buttons.h \
+    calformula.h \
     currentdocpat.h \
+    intkeypad.h \
     loaddoctor.h \
     mainwindow.h \
+    textkeypad.h \
     viewdoc.h \
     viewpatient.h
 
@@ -44,8 +50,10 @@ FORMS += \
     addpatient.ui \
     buttons.ui \
     currentdocpat.ui \
+    intkeypad.ui \
     loaddoctor.ui \
     mainwindow.ui \
+    textkeypad.ui \
     viewdoc.ui \
     viewpatient.ui
 

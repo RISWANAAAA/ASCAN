@@ -18,5 +18,8 @@
         <file>edit.png</file>
         <file>selectformula.png</file>
         <file>unselectformula.png</file>
+        <file>backspacebutton.png</file>
+        <file>enterbutton.png</file>
+        <file>textbutton.png</file>
     </qresource>
 </RCC>

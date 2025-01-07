@@ -497,10 +497,12 @@ public:
         combolens1 = new QComboBox(tab_7);
         combolens1->setObjectName(QString::fromUtf8("combolens1"));
         combolens1->setGeometry(QRect(0, 120, 311, 41));
-        combolens1->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+        combolens1->setStyleSheet(QString::fromUtf8("font: 18pt \"Ubuntu\";\n"
 "background-color: rgb(0, 117, 143);\n"
-"border:3px solid white;\n"
-"border-radius:10px;"));
+"color: rgb(255, 255, 255);\n"
+"font:bold;\n"
+"border-radius:10px;\n"
+"border:3px solid white;"));
         linelens1ref1 = new QLineEdit(tab_7);
         linelens1ref1->setObjectName(QString::fromUtf8("linelens1ref1"));
         linelens1ref1->setGeometry(QRect(200, 220, 111, 41));
@@ -577,9 +579,11 @@ public:
         linelens1emm = new QLineEdit(tab_7);
         linelens1emm->setObjectName(QString::fromUtf8("linelens1emm"));
         linelens1emm->setGeometry(QRect(830, 210, 201, 51));
-        linelens1emm->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"border:1px solid white;\n"
-"border-radius:10px;"));
+        linelens1emm->setStyleSheet(QString::fromUtf8("font: 18pt \"Ubuntu\";\n"
+"color: rgb(255, 255, 255);\n"
+"font:bold;\n"
+"border-radius:10px;\n"
+"border:1px solid white;"));
         linelens1aconst = new QLineEdit(tab_7);
         linelens1aconst->setObjectName(QString::fromUtf8("linelens1aconst"));
         linelens1aconst->setGeometry(QRect(550, 120, 221, 41));
@@ -1247,7 +1251,7 @@ public:
 
         retranslateUi(Buttons);
 
-        tabWidget->setCurrentIndex(3);
+        tabWidget->setCurrentIndex(4);
 
 
         QMetaObject::connectSlotsByName(Buttons);
@@ -1324,11 +1328,11 @@ public:
         lblk2->setText(QCoreApplication::translate("Buttons", "K2(mm)", nullptr));
         linek2->setText(QString());
         lblk->setText(QCoreApplication::translate("Buttons", "K", nullptr));
-        linek->setText(QString());
+        linek->setText(QCoreApplication::translate("Buttons", "45.00", nullptr));
         lblrx->setText(QCoreApplication::translate("Buttons", "Rx", nullptr));
-        linerx->setText(QString());
-        lblacd_2->setText(QCoreApplication::translate("Buttons", "ACD", nullptr));
-        lineacd->setText(QString());
+        linerx->setText(QCoreApplication::translate("Buttons", "0.00", nullptr));
+        lblacd_2->setText(QCoreApplication::translate("Buttons", "AL", nullptr));
+        lineacd->setText(QCoreApplication::translate("Buttons", "23.00", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_7), QCoreApplication::translate("Buttons", "Page", nullptr));
         label_6->setText(QCoreApplication::translate("Buttons", "Calibration", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_8), QCoreApplication::translate("Buttons", "Page", nullptr));

@@ -394,7 +394,7 @@ public:
         But8->setText(QCoreApplication::translate("textkeypad", "8", nullptr));
         But9->setText(QCoreApplication::translate("textkeypad", "9", nullptr));
         But0->setText(QCoreApplication::translate("textkeypad", "0", nullptr));
-        ButBack->setText(QString());
+        ButBack->setText(QCoreApplication::translate("textkeypad", "Clear", nullptr));
         ButQ->setText(QCoreApplication::translate("textkeypad", "Q", nullptr));
         ButW->setText(QCoreApplication::translate("textkeypad", "W", nullptr));
         ButE->setText(QCoreApplication::translate("textkeypad", "E", nullptr));
@@ -407,8 +407,8 @@ public:
         ButP->setText(QCoreApplication::translate("textkeypad", "P", nullptr));
         ButK->setText(QCoreApplication::translate("textkeypad", "K", nullptr));
         ButD->setText(QCoreApplication::translate("textkeypad", "D", nullptr));
-        ButEnter->setText(QCoreApplication::translate("textkeypad", "1", nullptr));
-        ButUpper_Lower->setText(QCoreApplication::translate("textkeypad", "1", nullptr));
+        ButEnter->setText(QCoreApplication::translate("textkeypad", "Enter", nullptr));
+        ButUpper_Lower->setText(QCoreApplication::translate("textkeypad", "UP/Low", nullptr));
         ButA->setText(QCoreApplication::translate("textkeypad", "A", nullptr));
         ButG->setText(QCoreApplication::translate("textkeypad", "G", nullptr));
         ButS->setText(QCoreApplication::translate("textkeypad", "S", nullptr));
@@ -426,7 +426,7 @@ public:
         ButV->setText(QCoreApplication::translate("textkeypad", "V", nullptr));
         ButM->setText(QCoreApplication::translate("textkeypad", "M", nullptr));
         ButN->setText(QCoreApplication::translate("textkeypad", "N", nullptr));
-        ButBackSpace->setText(QString());
+        ButBackSpace->setText(QCoreApplication::translate("textkeypad", "BackSpace", nullptr));
     } // retranslateUi
 
 };

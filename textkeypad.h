@@ -2,7 +2,7 @@
 #define TEXTKEYPAD_H
 
 #include <QDialog>
-
+#include<QLineEdit>
 namespace Ui {
 class textkeypad;
 }
@@ -20,12 +20,12 @@ public:
 signals:
    void textsignal(const QString& digit);
    void backsignal();
-   void spacesignal();
+ //  void spacesignal(QLineEdit* lineEdit);
    void entersignal();
 private slots:
     void entertext();
     void enterback();
-    void spaceenter();
+ //   void spaceenter(QLineEdit* lineEdit);
     void enterenter();
     void on_ButUpper_Lower_clicked();
 

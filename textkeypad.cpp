@@ -7,18 +7,25 @@ textkeypad::textkeypad(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Connect all number and character buttons
-    for (int i = 1; i <= 41; ++i) {
-        QPushButton *button = findChild<QPushButton *>(QString("pushButton_%1").arg(i));
-        if (button) {
-            connect(button, &QPushButton::clicked, this, &textkeypad::entertext);
-        }
+    QPushButton* buttons[] = {
+        ui->But0, ui->ButOne, ui->ButTwo, ui->But3,
+        ui->But4, ui->But5, ui->But6, ui->But7,
+        ui->But8, ui->But9, ui->ButZ, ui->ButX,
+        ui->ButC,ui->ButV,ui->ButB,ui->ButN,ui->ButM,ui->ButA,ui->ButS,
+        ui->ButD,ui->ButF,ui->ButF,ui->ButG,ui->ButH,ui->ButJ,ui->ButK,ui->ButL,
+        ui->ButQ,ui->ButW,ui->ButE,ui->ButR,ui->ButT,ui->ButY,ui->ButU,ui->ButI,
+        ui->ButO,ui->ButP,ui->ButQues,ui->ButDot,ui->Butcomma
+    };
+
+    // Connect all numeric buttons to entertext slot
+    for (QPushButton* button : buttons) {
+        connect(button, &QPushButton::clicked, this, &textkeypad::entertext);
     }
 
     // Connect special function buttons
     connect(ui->ButBack, &QPushButton::clicked, this, &textkeypad::enterback);
     connect(ui->ButEnter, &QPushButton::clicked, this, &textkeypad::enterenter);
-    connect(ui->ButBackSpace, &QPushButton::clicked, this, &textkeypad::spaceenter);
+    //connect(ui->ButBackSpace, &QPushButton::clicked, this, &textkeypad::spaceenter);
 }
 
 textkeypad::~textkeypad()
@@ -41,10 +48,7 @@ void textkeypad::enterback()
     emit backsignal();
 }
 
-void textkeypad::spaceenter()
-{
-    emit spacesignal();
-}
+
 
 void textkeypad::enterenter()
 {
@@ -53,19 +57,5 @@ void textkeypad::enterenter()
 
 void textkeypad::on_ButUpper_Lower_clicked()
 {
-    // Toggle the mode
-    isLowercaseMode = !isLowercaseMode;
 
-    // Update the text of number and character buttons based on the current mode
-    for (int i = 1; i <= 41; ++i) {
-        QPushButton *button = findChild<QPushButton *>(QString("pushButton_%1").arg(i));
-        if (button) {
-            QString currentText = button->text();
-            if (isLowercaseMode) {
-                button->setText(currentText.toLower()); // Convert to lowercase
-            } else {
-                button->setText(currentText.toUpper()); // Convert to uppercase
-            }
-        }
-    }
 }

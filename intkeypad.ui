@@ -68,7 +68,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string>Enter</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -217,7 +217,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>Back</string>
    </property>
   </widget>
   <widget class="QPushButton" name="But3">
@@ -275,7 +275,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string>Clear</string>
    </property>
   </widget>
   <zorder>label</zorder>

@@ -235,7 +235,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>Clear</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ButQ">
@@ -483,7 +483,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string>Enter</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ButUpper_Lower">
@@ -502,7 +502,7 @@ font:bold;
 border:none;</string>
    </property>
    <property name="text">
-    <string>1</string>
+    <string>UP/Low</string>
    </property>
   </widget>
   <widget class="QPushButton" name="ButA">
@@ -842,7 +842,7 @@ border:none;</string>
 image: url(:/image/backspacebutton.png);</string>
    </property>
    <property name="text">
-    <string/>
+    <string>BackSpace</string>
    </property>
   </widget>
  </widget>

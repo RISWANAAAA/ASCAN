@@ -21,12 +21,15 @@ signals:
     //void backsignal();
     void entersignal();
     void backsignal();
+    void clearsignal();
 
 private slots:
     void entertext();
     //void enterback();
     void enterenter();
     void enterback();
+
+    void on_ButEnter_2_clicked();
 
 private:
     Ui::intkeypad *ui;

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_intkeypad_t {
-    QByteArrayData data[9];
-    char stringdata0[82];
+    QByteArrayData data[11];
+    char stringdata0[116];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,14 +38,16 @@ QT_MOC_LITERAL(2, 21, 0), // ""
 QT_MOC_LITERAL(3, 22, 5), // "digit"
 QT_MOC_LITERAL(4, 28, 11), // "entersignal"
 QT_MOC_LITERAL(5, 40, 10), // "backsignal"
-QT_MOC_LITERAL(6, 51, 9), // "entertext"
-QT_MOC_LITERAL(7, 61, 10), // "enterenter"
-QT_MOC_LITERAL(8, 72, 9) // "enterback"
+QT_MOC_LITERAL(6, 51, 11), // "clearsignal"
+QT_MOC_LITERAL(7, 63, 9), // "entertext"
+QT_MOC_LITERAL(8, 73, 10), // "enterenter"
+QT_MOC_LITERAL(9, 84, 9), // "enterback"
+QT_MOC_LITERAL(10, 94, 21) // "on_ButEnter_2_clicked"
 
     },
     "intkeypad\0textsignal\0\0digit\0entersignal\0"
-    "backsignal\0entertext\0enterenter\0"
-    "enterback"
+    "backsignal\0clearsignal\0entertext\0"
+    "enterenter\0enterback\0on_ButEnter_2_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -55,29 +57,33 @@ static const uint qt_meta_data_intkeypad[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   44,    2, 0x06 /* Public */,
-       4,    0,   47,    2, 0x06 /* Public */,
-       5,    0,   48,    2, 0x06 /* Public */,
+       1,    1,   54,    2, 0x06 /* Public */,
+       4,    0,   57,    2, 0x06 /* Public */,
+       5,    0,   58,    2, 0x06 /* Public */,
+       6,    0,   59,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   49,    2, 0x08 /* Private */,
-       7,    0,   50,    2, 0x08 /* Private */,
-       8,    0,   51,    2, 0x08 /* Private */,
+       7,    0,   60,    2, 0x08 /* Private */,
+       8,    0,   61,    2, 0x08 /* Private */,
+       9,    0,   62,    2, 0x08 /* Private */,
+      10,    0,   63,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -94,9 +100,11 @@ void intkeypad::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 0: _t->textsignal((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->entersignal(); break;
         case 2: _t->backsignal(); break;
-        case 3: _t->entertext(); break;
-        case 4: _t->enterenter(); break;
-        case 5: _t->enterback(); break;
+        case 3: _t->clearsignal(); break;
+        case 4: _t->entertext(); break;
+        case 5: _t->enterenter(); break;
+        case 6: _t->enterback(); break;
+        case 7: _t->on_ButEnter_2_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -119,6 +127,13 @@ void intkeypad::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             using _t = void (intkeypad::*)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&intkeypad::backsignal)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (intkeypad::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&intkeypad::clearsignal)) {
+                *result = 3;
                 return;
             }
         }
@@ -154,13 +169,13 @@ int intkeypad::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }
@@ -182,6 +197,12 @@ void intkeypad::entersignal()
 void intkeypad::backsignal()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void intkeypad::clearsignal()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

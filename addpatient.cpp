@@ -83,6 +83,26 @@ addPatient::addPatient(QWidget *parent) :
             ui->CheckLeft->setChecked(false);
         }
     });
+    connect(key,&intkeypad::textsignal,this,&addPatient::on_clicked);
+
+    connect(key,&intkeypad::entersignal,this,&addPatient::on_clickedenter);
+         connect(key,&intkeypad::backsignal,this,&addPatient::on_clickedenter);
+       connect(key,&intkeypad::clearsignal,this,&addPatient::handleClearSignal);
+       connect(text,&textkeypad::textsignal,this,&addPatient::on_clicked);
+      connect(text,&textkeypad::entersignal,this,&addPatient::on_clickedenter);
+   //   connect(text,&textkeypad::backsignal,this,&addPatient::on_clickedenter);
+      connect(key,&intkeypad::backsignal,this,&addPatient::handleClearSignal);
+
+    ui->linepatid->installEventFilter(this);
+    ui->linepatname->installEventFilter(this);
+    ui->linepatage->installEventFilter(this);
+    ui->linepatphone->installEventFilter(this);
+    ui->linepatkr->installEventFilter(this);
+    ui->linepatkr1->installEventFilter(this);
+    ui->linepatkr2->installEventFilter(this);
+    ui->linepatkl->installEventFilter(this);
+    ui->linepatkl1->installEventFilter(this);
+    ui->linepatkl2->installEventFilter(this);
 
 }
 
@@ -153,7 +173,7 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
     else if(object == ui->linepatname && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+             text->show();
           ui->linepatname->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -210,7 +230,7 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
     else if(object == ui->linepatkl1 && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+  key->show();
           ui->linepatkl1->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -229,7 +249,7 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
     else if(object == ui->linepatkl2 && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+  key->show();
           ui->linepatkl2->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -248,7 +268,7 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
     else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+  key->show();
           ui->linepatkl->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -267,7 +287,7 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
     else if(object == ui->linepatkr1 && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+  key->show();
           ui->linepatkr1->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -283,10 +303,48 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
       } else if ( k->button() == Qt::RightButton ) {
       }
 }
+    else if(object == ui->linepatkr2 && event->type() == QEvent::MouseButtonPress) {
+      QMouseEvent *k = static_cast<QMouseEvent *> (event);
+      if( k->button() == Qt::LeftButton ) {
+  key->show();
+          ui->linepatkr2->setFocus();
+          ui->linepatid->clearFocus();
+          ui->linepatage->clearFocus();
+          ui->linepatphone->clearFocus();
+          ui->linepatkl1->clearFocus();
+          ui->linepatkl2->clearFocus();
+          ui->linepatname->clearFocus();
+          ui->linepatkr->clearFocus();
+          ui->linepatkr1->clearFocus();
+          ui->linepatkl->clearFocus();
+          ui->linepatkr2->setText("");
+
+      } else if ( k->button() == Qt::RightButton ) {
+      }
+    }
+      else if(object == ui->linepatkr && event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *k = static_cast<QMouseEvent *> (event);
+        if( k->button() == Qt::LeftButton ) {
+  key->show();
+            ui->linepatkr->setFocus();
+            ui->linepatid->clearFocus();
+            ui->linepatage->clearFocus();
+            ui->linepatphone->clearFocus();
+            ui->linepatkl1->clearFocus();
+            ui->linepatkl2->clearFocus();
+            ui->linepatname->clearFocus();
+            ui->linepatkr2->clearFocus();
+            ui->linepatkr1->clearFocus();
+            ui->linepatkl->clearFocus();
+            ui->linepatkr->setText("");
+
+        } else if ( k->button() == Qt::RightButton ) {
+        }
+}
     else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
       QMouseEvent *k = static_cast<QMouseEvent *> (event);
       if( k->button() == Qt::LeftButton ) {
-
+            key->show();
           ui->linepatkl->setFocus();
           ui->linepatid->clearFocus();
           ui->linepatage->clearFocus();
@@ -302,26 +360,11 @@ bool addPatient::eventFilter(QObject *object, QEvent *event)
       } else if ( k->button() == Qt::RightButton ) {
       }
 }
-    else if(object == ui->linepatkl && event->type() == QEvent::MouseButtonPress) {
-      QMouseEvent *k = static_cast<QMouseEvent *> (event);
-      if( k->button() == Qt::LeftButton ) {
+    return  false;
 
-          ui->linepatkl->setFocus();
-          ui->linepatid->clearFocus();
-          ui->linepatage->clearFocus();
-          ui->linepatphone->clearFocus();
-          ui->linepatkl1->clearFocus();
-          ui->linepatkl2->clearFocus();
-          ui->linepatname->clearFocus();
-          ui->linepatkr->clearFocus();
-          ui->linepatkr1->clearFocus();
-          ui->linepatkr2->clearFocus();
-          ui->linepatkl->setText("");
+}
 
-      } else if ( k->button() == Qt::RightButton ) {
-      }
-}
-}
+
 void addPatient::on_ButPatSave_clicked()
 {
     QString id=ui->linepatid->text();
@@ -450,3 +493,324 @@ void addPatient::on_ButPatSave_clicked()
     }
 
 }
+
+void addPatient::on_clicked(const QString &digit)
+{
+    if (ui->linepatid->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatid->text();
+
+        ui->linepatid->setText(text+digit);
+       // on_enterbackclicked(ui->linepatid);
+    }
+    if (ui->linepatname->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+        ui->linepatid->clearFocus();
+
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatname->text();
+
+        ui->linepatname->setText(text+digit);
+       // on_enterbackclicked(ui->linepatid);
+    }
+    if (ui->linepatage->focusWidget()) {
+
+        ui->linepatid->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatage->text();
+
+        ui->linepatage->setText(text+digit);
+    }
+    if (ui->linepatphone->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatphone->text();
+
+        ui->linepatphone->setText(text+digit);
+    }
+    if (ui->linepatkl1->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkl1->text();
+
+        ui->linepatkl1->setText(text+digit);
+    }
+    if (ui->linepatkl2->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkl2->text();
+
+        ui->linepatkl2->setText(text+digit);
+    }
+    if (ui->linepatkl->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkl->text();
+
+        ui->linepatkl->setText(text+digit);
+    }
+    if (ui->linepatkr->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkr->text();
+
+        ui->linepatkr->setText(text+digit);
+    }
+    if (ui->linepatkr1->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatkr->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatid->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkr1->text();
+
+        ui->linepatkr1->setText(text+digit);
+    }
+    if (ui->linepatkr->focusWidget()) {
+
+        ui->linepatage->clearFocus();
+        ui->linepatphone->clearFocus();
+        ui->linepatkl->clearFocus();
+        ui->linepatkl1->clearFocus();
+        ui->linepatkl2->clearFocus();
+        ui->linepatid->clearFocus();
+        ui->linepatkr2->clearFocus();
+        ui->linepatkr1->clearFocus();
+
+
+        // Append digit to the current text and update lineEdit_3
+        QString text = ui->linepatkr->text();
+
+        ui->linepatkr->setText(text+digit);
+    }
+}
+
+void addPatient::on_clickedenter()
+{
+    key->hide();
+    QList<QLineEdit*> lineEdits1 = {
+        ui->linepatid, ui->linepatname, ui->linepatage,
+        ui->linepatphone, ui->linepatkr, ui->linepatkr1, ui->linepatkr2,
+         ui->linepatkl, ui->linepatkl1, ui->linepatkl2
+    };
+
+    for (QLineEdit* lineEdit1 : lineEdits1) {
+        QString currentText1 = lineEdit1->text().trimmed();
+
+        if (!currentText1.isEmpty()) {
+            int input1 = currentText1.toInt();
+           // int output1 = decreasebutton(input1);  // Process the input to get the desired output
+            lineEdit1->setText(QString::number(input1));
+            lastValidValues[lineEdit1] = input1;  // Update the last valid value
+        } else {
+            // Restore the last valid value if input is empty
+            if (lastValidValues.contains(lineEdit1)) {
+                lineEdit1->setText(QString::number(lastValidValues[lineEdit1]));
+            }
+        }
+    }
+
+}
+
+void addPatient::handleClearSignal()
+{
+    if (ui->linepatid->focusWidget()) {
+
+
+        QString text = ui->linepatid->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatid->setText(text);
+               }
+    }
+    else if (ui->linepatname->focusWidget()) {
+
+
+        QString text = ui->linepatname->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatname->setText(text);
+               }
+    }
+    else if (ui->linepatage->focusWidget()) {
+
+
+        QString text = ui->linepatage->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatage->setText(text);
+               }
+    }
+    else if (ui->linepatkl1->focusWidget()) {
+
+
+        QString text = ui->linepatkl1->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkl1->setText(text);
+               }
+    }
+    else if (ui->linepatkl2->focusWidget()) {
+
+
+        QString text = ui->linepatkl2->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkl2->setText(text);
+               }
+    }
+    else if (ui->linepatkl->focusWidget()) {
+
+
+        QString text = ui->linepatkl->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkl->setText(text);
+               }
+    }
+    else if (ui->linepatkr->focusWidget()) {
+
+
+        QString text = ui->linepatkr->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkr->setText(text);
+               }
+    }
+    else if (ui->linepatkr1->focusWidget()) {
+
+
+        QString text = ui->linepatkr1->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkr1->setText(text);
+               }
+    }
+    else if (ui->linepatkr2->focusWidget()) {
+
+
+        QString text = ui->linepatkr2->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkr2->setText(text);
+               }
+    }
+    else if (ui->linepatkr->focusWidget()) {
+
+
+        QString text = ui->linepatkr->text();
+
+               // Chop the last character if text is not empty
+               if (!text.isEmpty()) {
+                   text.chop(1);
+                 ui->linepatkr->setText(text);
+               }
+    }
+}
+
+

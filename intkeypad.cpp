@@ -20,6 +20,7 @@ intkeypad::intkeypad(QWidget *parent) :
     // Array of buttons for enterenter
     QPushButton* enterButtons[] = {
     ui->ButEnter
+
     };
 
     // Connect all enter buttons to enterenter slot
@@ -53,4 +54,9 @@ void intkeypad::enterback()
 {
     emit backsignal();
 
+}
+
+void intkeypad::on_ButEnter_2_clicked()
+{
+   emit clearsignal();
 }

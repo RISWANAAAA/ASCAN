@@ -162,7 +162,7 @@ public:
         intkeypad->setWindowTitle(QCoreApplication::translate("intkeypad", "Dialog", nullptr));
         But8->setText(QCoreApplication::translate("intkeypad", "8", nullptr));
         But0->setText(QCoreApplication::translate("intkeypad", "0", nullptr));
-        ButEnter->setText(QCoreApplication::translate("intkeypad", "1", nullptr));
+        ButEnter->setText(QCoreApplication::translate("intkeypad", "Enter", nullptr));
         label->setText(QString());
         ButTwo->setText(QCoreApplication::translate("intkeypad", "2", nullptr));
         But6->setText(QCoreApplication::translate("intkeypad", "6", nullptr));
@@ -170,10 +170,10 @@ public:
         But5->setText(QCoreApplication::translate("intkeypad", "5", nullptr));
         But7->setText(QCoreApplication::translate("intkeypad", "7", nullptr));
         But9->setText(QCoreApplication::translate("intkeypad", "9", nullptr));
-        ButBack->setText(QString());
+        ButBack->setText(QCoreApplication::translate("intkeypad", "Back", nullptr));
         But3->setText(QCoreApplication::translate("intkeypad", "3", nullptr));
         ButOne->setText(QCoreApplication::translate("intkeypad", "1", nullptr));
-        ButEnter_2->setText(QCoreApplication::translate("intkeypad", "1", nullptr));
+        ButEnter_2->setText(QCoreApplication::translate("intkeypad", "Clear", nullptr));
     } // retranslateUi
 
 };

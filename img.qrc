@@ -21,5 +21,7 @@
         <file>backspacebutton.png</file>
         <file>enterbutton.png</file>
         <file>textbutton.png</file>
+        <file>backbuttonarrow.png</file>
+        <file>patienttttt.png</file>
     </qresource>
 </RCC>

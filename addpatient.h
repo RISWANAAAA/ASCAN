@@ -2,7 +2,8 @@
 #define ADDPATIENT_H
 
 #include <QDialog>
-#define PATH "/home/amt-04/ascanmain.db"
+//#define PATH "/home/amt-04/ascanmain.db"
+#define PATH "ascanmain.db"
 #include<QtSql>
 #include<QSqlDatabase>
 #include<QSqlError>
@@ -30,6 +31,7 @@ private slots:
     void on_ButPatSave_clicked();
     void on_clicked(const QString& digit);
     void on_clickedenter();
+void spaceclicked();
    void handleClearSignal();
 signals:
     void updatepatsql();
@@ -42,6 +44,8 @@ private:
     textkeypad *text;
     intkeypad *key;
     QMap<QLineEdit*, int> lastValidValues;
+    QMap<QLineEdit*, QString> lastValidValues1;
+
 
 
 };

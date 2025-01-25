@@ -839,6 +839,8 @@ border:none;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border:none;
+font: 75 15pt &quot;Ubuntu&quot;;
+font:bold;
 image: url(:/image/backspacebutton.png);</string>
    </property>
    <property name="text">

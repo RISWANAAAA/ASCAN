@@ -22,7 +22,6 @@ Buttons::Buttons(QWidget *parent) :
     mydb1.setDatabaseName(PATH);  // Replace with your actual path
 
     if (!mydb1.open()) {
-        qDebug() << "Failed to open the database:" << mydb1.lastError().text();
         return;
     }
 

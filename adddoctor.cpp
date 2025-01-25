@@ -15,10 +15,8 @@ key=new intkeypad;
     mydb1.setDatabaseName(PATH);  // Replace with your actual database path
 
     if (!mydb1.open()) {
-        qDebug() << "Failed to open the database:" << mydb1.lastError().text();
         return;
     }
-    qDebug() << "Database opened successfully.";
     connect(l,&AddLens::tx_insertiol,this,&AddDoctor::getinsertiol);
 
 }
@@ -54,19 +52,11 @@ void AddDoctor::getlens()
         ui->comboBox->addItems(lensTypes);
         ui->comboBox_2->addItems(lensTypes);
         ui->comboBox_3->addItems(lensTypes);
-
-        qDebug() << "Lens types retrieved from SQL:" << lensTypes;
-    } else {
-        qWarning() << "Database error:" << query.lastError().text();
     }
 }
 
 void AddDoctor::getinsertiol(const QString &text)
 {
-
-        qDebug() << text << "those are new inserted IOL////////////////////////////////////";
-
-        // Add the received text to the combo boxes
         ui->comboBox->addItem(text);
         ui->comboBox_2->addItem(text);
         ui->comboBox_3->addItem(text);
@@ -108,7 +98,6 @@ void AddDoctor::on_ButDocSave_clicked()
     query.prepare("SELECT COUNT(*) FROM ascandoctor WHERE Doctorid = :id");
     query.bindValue(":id", docid);
     if (!query.exec()) {
-        qDebug() << "Failed to execute record existence check:" << query.lastError().text();
         return;
     }
 
@@ -118,7 +107,6 @@ void AddDoctor::on_ButDocSave_clicked()
             recordExists = true;  // ID exists
         }
     } else {
-        qDebug() << "Failed to fetch record existence result:" << query.lastError().text();
         return;
     }
 
@@ -144,13 +132,10 @@ void AddDoctor::on_ButDocSave_clicked()
     query.bindValue(":formula", formula);
 
     if (!query.exec()) {
-        qDebug() << "Failed to execute query:" << query.lastError().text();
     } else {
         if (recordExists) {
-            qDebug() << "Record updated successfully for ID:" << docid;
              emit updatedocsql();
         } else {
-            qDebug() << "New record added successfully with ID:" << docid;
             emit lastupdatedocid_buttons(docid,docname);
 emit savedocsql();
         }

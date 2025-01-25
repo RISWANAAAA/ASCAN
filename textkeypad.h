@@ -20,7 +20,7 @@ public:
 signals:
    void textsignal(const QString& digit);
    void backsignal();
- //  void spacesignal(QLineEdit* lineEdit);
+  void spacesignal();
    void entersignal();
 private slots:
     void entertext();
@@ -29,10 +29,17 @@ private slots:
     void enterenter();
     void on_ButUpper_Lower_clicked();
 
+    void on_ButEnter_clicked();
+
+    void on_ButBack_clicked();
+
+    void on_ButBackSpace_clicked();
+
 private:
     Ui::textkeypad *ui;
     bool isLowercaseMode;
-
+bool isFirstClick = true;
+QString currentText = "";
 };
 
 #endif // TEXTKEYPAD_H

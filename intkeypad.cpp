@@ -19,7 +19,7 @@ intkeypad::intkeypad(QWidget *parent) :
 
     // Array of buttons for enterenter
     QPushButton* enterButtons[] = {
-    ui->ButEnter
+    ui->ButEnter,ui->ButBack
 
     };
 

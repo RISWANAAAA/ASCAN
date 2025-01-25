@@ -90,8 +90,8 @@ addPatient::addPatient(QWidget *parent) :
        connect(key,&intkeypad::clearsignal,this,&addPatient::handleClearSignal);
        connect(text,&textkeypad::textsignal,this,&addPatient::on_clicked);
       connect(text,&textkeypad::entersignal,this,&addPatient::on_clickedenter);
-   //   connect(text,&textkeypad::backsignal,this,&addPatient::on_clickedenter);
-      connect(key,&intkeypad::backsignal,this,&addPatient::handleClearSignal);
+ connect(text,&textkeypad::backsignal,this,&addPatient::handleClearSignal);
+ connect(text,&textkeypad::spacesignal,this,&addPatient::spaceclicked);
 
     ui->linepatid->installEventFilter(this);
     ui->linepatname->installEventFilter(this);
@@ -430,7 +430,6 @@ void addPatient::on_ButPatSave_clicked()
     query.prepare("SELECT COUNT(*) FROM ascanpatient WHERE ID = :id");
     query.bindValue(":id", id);
     if (!query.exec()) {
-        qDebug() << "Failed to execute record existence check:" << query.lastError().text();
         return;
     }
 
@@ -440,7 +439,6 @@ void addPatient::on_ButPatSave_clicked()
             recordExists = true;  // ID exists
         }
     } else {
-        qDebug() << "Failed to fetch record existence result:" << query.lastError().text();
         return;
     }
 
@@ -477,14 +475,11 @@ void addPatient::on_ButPatSave_clicked()
     query.bindValue(":kerator", kerator);
 
     if (!query.exec()) {
-        qDebug() << "Failed to execute query:" << query.lastError().text();
     } else {
         if (recordExists) {
-            qDebug() << "Record updated successfully for ID:" << id;
             emit updatepatsql();
 
         } else {
-            qDebug() << "New record added successfully with ID:" << id;
             emit savepatsql();
             emit saveforload();
             emit savepatid_name(id,Name);
@@ -675,12 +670,29 @@ void addPatient::on_clicked(const QString &digit)
 void addPatient::on_clickedenter()
 {
     key->hide();
+    text->hide();
     QList<QLineEdit*> lineEdits1 = {
-        ui->linepatid, ui->linepatname, ui->linepatage,
+        ui->linepatid, ui->linepatage,
         ui->linepatphone, ui->linepatkr, ui->linepatkr1, ui->linepatkr2,
          ui->linepatkl, ui->linepatkl1, ui->linepatkl2
     };
+    QList<QLineEdit*> lineEdits2 = {
+        ui->linepatname
+    };
+    for (QLineEdit* lineEdit2 : lineEdits2) {
+        QString currentText2 = lineEdit2->text().trimmed();
 
+        if (!currentText2.isEmpty()) {
+            // For string inputs, simply trim and store the text
+            lineEdit2->setText(currentText2);
+            lastValidValues1[lineEdit2] = currentText2;  // Store the last valid string
+        } else {
+            // Restore the last valid string if input is empty
+            if (lastValidValues1.contains(lineEdit2)) {
+                lineEdit2->setText(lastValidValues1[lineEdit2]);
+            }
+        }
+    }
     for (QLineEdit* lineEdit1 : lineEdits1) {
         QString currentText1 = lineEdit1->text().trimmed();
 
@@ -698,6 +710,13 @@ void addPatient::on_clickedenter()
     }
 
 }
+
+void addPatient::spaceclicked()
+{
+    ui->linepatname->setText(ui->linepatname->text() + " ");  // Append a space to the QLineEdit
+
+}
+
 
 void addPatient::handleClearSignal()
 {

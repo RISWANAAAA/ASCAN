@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     but=new Buttons;
     addp=new addPatient;
     move(0,0);
+
     mydb1 = QSqlDatabase::addDatabase("QSQLITE");
      mydb1.setDatabaseName(PATH);  // Replace with your actual path
 
@@ -48,16 +49,12 @@ MainWindow::MainWindow(QWidget *parent)
 
    connect(addp,&addPatient::savepatid_name,this,&MainWindow::updateComboBox);
    connect(this,&MainWindow::sendpatientsql,but,&Buttons::loadpatientsql);
-   // In MainWindow constructor or initialization
    connect(this, SIGNAL(sendpatientid(QString, QString)),
            but, SLOT(rx_patidname(QString, QString)));
    connect(this,&MainWindow::emitpatientidname,but,&Buttons::rx_patidname);
-   //connect(ui->comboBox, &QComboBox::currentIndexChanged, this, &MainWindow::onComboBoxSelectionChanged);
   emit emitpatientidname(lastSelectedPatientID,lastSelectedPatientName);
 connect(but,&Buttons::tx_currentpatdoc_main,this,&MainWindow::onPatientSelected);
 
-//connect(but, SIGNAL(tx_currentpatdoc_main(QString, QString)),
-//        this, SLOT(updateComboBox1(QString, QString)));
 }
 
 MainWindow::~MainWindow()
@@ -65,9 +62,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 void MainWindow::onPatientSelected(const QString &id) {
-    qDebug() << "Received new ID:" << id;
-
-      // Query the database to get the new patient name
       QSqlQuery query;
       query.prepare("SELECT Name FROM ascanpatient WHERE ID = :id");
       query.bindValue(":id", id);
@@ -93,8 +87,6 @@ void MainWindow::onPatientSelected(const QString &id) {
           if (!found) {
               ui->comboBox->setCurrentText(updatedName); // Set the current text
           }
-      } else {
-          qDebug() << "Error fetching patient name:" << query.lastError().text();
       }
 }
 
@@ -130,8 +122,7 @@ void MainWindow::saveSelectedPatient(const QString &id, const QString &name)
     QSettings settings("YourCompanyName", "YourAppName");
     settings.setValue("lastSelectedPatientID", id);
     settings.setValue("lastSelectedPatientName", name); // Save the name
-    qDebug() << "Saved Patient ID:" << id;
-    qDebug() << "Saved Patient Name:" << name;
+
 }
 void MainWindow::onComboBoxSelectionChanged()
 {
@@ -153,41 +144,32 @@ void MainWindow::loadlastpatient()
 
     comboBox->clear();
 
+    // Populate the combo box
     while (query.next()) {
         QString id = query.value(0).toString();
         QString name = query.value(1).toString();
         QString itemText = QString("%1_%2").arg(id).arg(name);
-        comboBox->addItem(itemText, id); // ID as user data
-      //  emit sendpatientid(id, name); // Emit ID and Name while adding to combo box
+        comboBox->addItem(itemText, id); // Store ID as user data
     }
 
-    // Load the last selected patient ID and Name from settings
     QSettings settings("YourCompanyName", "YourAppName");
-  lastSelectedPatientID = settings.value("lastSelectedPatientID", "").toString();
-  lastSelectedPatientName = settings.value("lastSelectedPatientName", "").toString();
-    qDebug() << "The last selected patient ID and name:" << lastSelectedPatientID << ".............."<<"last"<<"............................" << lastSelectedPatientName;
+        QString lastSelectedPatientID = settings.value("lastSelectedPatientID", "").toString();
+        QString lastSelectedPatientName = settings.value("lastSelectedPatientName", "").toString();
 
-    // Ensure comboBox_2 and comboBox_3 have the correct values
+
+
     if (!lastSelectedPatientID.isEmpty() && !lastSelectedPatientName.isEmpty()) {
-        // Format the ID_Name string for matching
+        // Format the text for comparison
         QString formattedText = QString("%1_%2").arg(lastSelectedPatientID).arg(lastSelectedPatientName);
 
+        // Find the index using the formatted text
+        int index = comboBox->findText(formattedText);
 
-        // Find and set the last selected patient ID and Name in the main combo box
-        int index = comboBox->findText(formattedText); // Look for the ID_Name format
         if (index != -1) {
-            comboBox->setCurrentIndex(index); // Set the current index based on the formatted text
-            qDebug() << "The patient ID and Name have been selected: " << formattedText;
-
-            // Emit the selected patient ID and name
-            //emit sendpatientid(lastSelectedPatientID, lastSelectedPatientName);
-        } else {
-            qDebug() << "Formatted patient text not found in combo box.";
-        }
+            comboBox->setCurrentIndex(index);
+           }
     }
 }
-
-
 
 
 void MainWindow::updateComboBox(const QString id, const QString &name)
@@ -209,8 +191,6 @@ void MainWindow::updateComboBox1(const QString id, const QString &name)
     ui->comboBox->addItem(itemText, id);
    ui->comboBox->setCurrentText(itemText);
   emit sendpatientsql();
-   qDebug()<<"the value will be "<<id<<name;
-
 
 
 }

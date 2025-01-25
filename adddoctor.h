@@ -2,7 +2,9 @@
 #define ADDDOCTOR_H
 
 #include <QDialog>
-#define PATH "/home/amt-04/ascanmain.db"
+//#define PATH "/home/amt-04/ascanmain.db"
+#define PATH "ascanmain.db"
+
 #include<QtSql>
 #include<QSqlDatabase>
 #include<QSqlError>
